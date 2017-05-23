@@ -1,0 +1,445 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Arquitetura Orientada a Componentes com AngularJS</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Arquitetura Orientada a Componentes</h2>
+					<h4>Com <a href="https://docs.angularjs.org/guide/component">AngularJS</a></h4>
+					<a href="http://guiseek.js.org">@guiseek</a>
+				</section>
+				<section>
+					<section>
+						<h1>Conceito</h1>
+					</section>
+					<section>
+						<p>Component-based software engineering (<strong>CBSE</strong>)</p>
+						<p>Component-based development (<strong>CBD</strong>)</p>
+					</section>
+					<section>
+						<h3>Separação de responsabilidades</h3>
+					</section>
+					<section>
+						<h3>Reutilização</h3>
+						<aside class="notes">
+							<ol>
+								<li>
+									Abordagem baseada na reutilização para definir, implementar e compor componentes independentes ligeiramente acoplados.
+								</li>
+								<li>
+									Benefícios de curto e longo prazo para o software e organizações que o patrocinam.
+								</li>
+							</ol>
+						</aside>
+					</section>
+					<section>
+						<p>Event-driven architectures (<strong>EDA</strong>)</p>
+						<aside class="notes">
+							Os componentes podem produzir e/ou consumir eventos.
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Web Components</h2>
+					</section>
+					<section>
+						<ul>
+							<li>
+								Templates
+							</li>
+							<li>
+								Decorators
+							</li>
+							<li>
+								Custom elements
+							</li>
+							<li>
+								Shadow DOM
+							</li>
+							<li>
+								Imports
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Templates</h3>
+						<aside class="notes">
+							View (HTML e CSS) e lógica de integração.
+						</aside>
+					</section>
+					<section>
+						<h3>Decorators</h3>
+						<aside class="notes">
+							Comportamento individual, estático ou visual, sem afetar comportamentos de outros elementos.
+						</aside>
+					</section>
+					<section>
+						<h3>Custom elements</h3>
+						<aside class="notes">
+							Nomes e scripts criados pelo desenvolvedor.
+						</aside>
+					</section>
+					<section>
+						<h3>Shadow DOM</h3>
+						<aside class="notes">
+							Parte do código encapsulada e escondida pelo navegador.
+						</aside>
+					</section>
+					<section>
+						<h3>Imports</h3>
+						<aside class="notes">
+							Custom elements empacotados e lidos como recurso.
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>AngularJS .Component</h2>
+					</section>
+					<section>
+						<h3>Compreendendo</h3>
+						<ul>
+							<li>
+								Configuração simples e adequada para uma estrutura baseada em componentes.
+							</li>
+							<li>
+								Facilita a escrita de uma aplicação de forma semelhante à utilização de Web Components.
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Vantagens</h3>
+						<ul>
+							<li>
+								Configuração simples
+							</li>
+							<li>
+								Promove padrões e práticas recomendadas
+							</li>
+							<li>
+								Otimizado para arquitetura baseada em componentes
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Criando e configurando</h3>
+						<p>
+							Registrado usando o método <code>.component()</code> retornado de um <code>angular.module()</code> já definido.
+						</p>
+						<p>O método <code>.component()</code> requer 2 argumentos:</p>
+						<ul>
+							<li>
+								O nome do componente como <code>string</code>
+							</li>
+							<li>
+								O objeto de configuração como <code>object</code>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Exemplo <i>(component)</i></h3>
+						<pre><code class="javascript" data-trim>
+let search = {
+  bindings: {
+    search: '<',
+    onUpdate: '&',
+    onClear: '&'
+  },
+  templateUrl: './search.html',
+  controller: 'SearchController'
+}
+
+angular
+  .module('components.search')
+  .component('search', search)
+						</code></pre>
+					</section>
+					<section>
+						<h3>Exemplo <i>(template)</i></h3>
+						<pre><code class="html" data-trim>
+<div class="navbar">
+  <div class="input-group">
+    <span class="input-group-addon" id="search">
+      <i class="glyphicon glyphicon-search"></i>
+    </span>
+    <input
+      ng-change="$ctrl.updateSearch()"
+      ng-model="$ctrl.search"
+			type="text"
+			class="form-control"
+      placeholder="Buscar...">
+    <span class="input-group-btn">
+      <button ng-click="$ctrl.clear()" ng-disabled="!$ctrl.search.length" type="button" class="btn btn-default">
+        <i class="glyphicon glyphicon-remove" ng-class="{'text-warning': $ctrl.search.length}"></i>
+      </button>
+    </span>
+  </div>
+</div>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Exemplo <i>(controller)</i></h3>
+						<pre><code class="javascript" data-trim>
+function SearchController() {
+  let ctrl = this
+  ctrl.updateSearch = () => {
+    ctrl.onUpdate({ $event: { search: ctrl.search } })
+  }
+  ctrl.clear = () => {
+    ctrl.onClear({ $event: { search: '' } })
+  }
+}
+
+angular
+  .module('components.search')
+  .controller('SearchController', SearchController);
+
+						</code></pre>
+					</section>
+					<section>
+						<h3>Exemplo de uso <i>(template)</i></h3>
+						<pre><code class="html" data-trim>
+<search
+  search="$ctrl.search"
+  on-update="$ctrl.updateSearch($event)"
+  on-clear="$ctrl.updateSearch($event)">
+</search>
+<div ng-if="$ctrl.filteredContacts.length" class="row">
+  <div ng-repeat="contact in $ctrl.filteredContacts | filter: $ctrl.search" class="col-md-3">
+    <contact
+      contact="contact"
+      on-select="$ctrl.goToContact($event)"
+      on-open="$ctrl.openModalContact($event)">
+    </contact>
+  </div>
+</div>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Exemplo de uso <i>(controller)</i></h3>
+						<pre><code class="javascript" data-trim>
+function ContactsController($filter) {
+  let ctrl = this
+  ctrl.$onInit = () => {
+    ctrl.filteredContacts = $filter('contactsFilter')(ctrl.contacts, ctrl.filter)
+  }
+  ctrl.updateSearch = event => {
+    ctrl.search = event.search
+  }
+}
+
+angular
+  .module('components.contact')
+  .controller('ContactsController', ContactsController)
+						</code></pre>
+					</section>
+					<section>
+						<h3>Opções de configuração</h3>
+						<table>
+							<tbody>
+								<tr>
+									<td>bindings</td>
+									<td>Ligação com o controller</td>
+								</tr>
+								<tr>
+									<td>controller</td>
+									<td>Default: <code>function() {}</code></td>
+								</tr>
+								<tr>
+									<td>controllerAs</td>
+									<td>Default: <code>$ctrl</code></td>
+								</tr>
+								<tr>
+									<td>template</td>
+									<td>Injetável</td>
+								</tr>
+								<tr>
+									<td>templateUrl</td>
+									<td>Injetável</td>
+								</tr>
+								<tr>
+									<td>transclude</td>
+									<td>Default <code>false</code></td>
+								</tr>
+								<tr>
+									<td>require</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Aplicações baseada em componentes</h2>
+					</section>
+					<section>
+						<h3>Componentes controlam apenas seus próprios dados e view</h3>
+						<aside class="notes">
+							Nunca devem modificar quaisquer dados ou DOM que estejam fora do seu próprio âmbito.
+						</aside>
+					</section>
+					<section>
+						<h3>Entradas e Saídas</h3>
+						<table>
+							<tbody>
+								<tr>
+									<td><code>{prop: '='}</code></td>
+									<td>Ligação bidirecional</td>
+								</tr>
+								<tr>
+									<td><code>{prop: '<'}</code></td>
+									<td>Ligação unidirecional</td>
+								</tr>
+								<tr>
+									<td><code>{prop: '@'}</code></td>
+									<td>Sem ligação</td>
+								</tr>
+								<tr>
+									<td><code>{prop: '&'}</code></td>
+									<td>Eventos de saída</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<h3>Ciclo de vida</h3>
+						<ul>
+							<li>
+								<code>$onInit()</code>
+							</li>
+							<li>
+								<code>$onChanges(changesObj)</code>
+							</li>
+							<li>
+								<code>$doCheck()</code>
+							</li>
+							<li>
+								<code>$onDestroy()</code>
+							</li>
+							<li>
+								<code>$postLink()</code>
+							</li>
+						</ul>
+						<aside class="notes">
+							<ol>
+								<li>
+									$onInit: Código de inicialização
+								</li>
+								<li>
+									$onChanges: Ligações unidirecionais
+								</li>
+								<li>
+									$doCheck: Em cada ciclo digestivo. Bom para agir sobre mudanças
+								</li>
+								<li>
+									$onDestroy: Liberar recursos, timers e manipuladores de eventos
+								</li>
+								<li>
+									$postLink: Elementos e seus filhos forem ligados, configurar manipuladores de DOM
+								</li>
+							</ol>
+						</aside>
+					</section>
+					<section>
+						<h3>Componentes como rotas</h3>
+						<pre><code class="javascript" data-trim>
+let contactNew = {
+  templateUrl: './contact-new.html',
+  controller: 'ContactNewController'
+}
+angular
+  .module('components.contact')
+  .component('contactNew', contactNew)
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('new', {
+        parent: 'app',
+        url: '/new',
+        component: 'contactNew'
+      })
+  })
+						</code></pre>
+					</section>
+					<section>
+						<h3>Componentes como rotas</h3>
+						<pre><code class="javascript" data-trim>
+let contactEdit = {
+  bindings: {
+    contact: '<'
+  },
+  templateUrl: './contact-edit.html',
+  controller: 'ContactEditController'
+}
+
+angular
+  .module('components.contact')
+  .component('contactEdit', contactEdit)
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('contact', {
+        parent: 'app',
+        url: '/contact/:id',
+        component: 'contactEdit',
+        resolve: {
+          contact: function ($transition$, ContactService) {
+            let key = $transition$.params().id;
+            return ContactService.getContactById(key).$loaded();
+          }
+        }
+      })
+  })
+						</code></pre>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
