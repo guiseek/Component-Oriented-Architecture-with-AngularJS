@@ -365,6 +365,22 @@ angular
 					</section>
 					<section>
 						<h3>Componentes como rotas</h3>
+					</section>
+					<section>
+						<p>View Component - New</p>
+						<img src="img/contact-new-component.png" alt="">
+					</section>
+					<section>
+						<p><code>contact-new.html</code></p>
+						<pre><code class="html">
+<contact-detail
+  contact="$ctrl.contact"
+  on-save="$ctrl.createNewContact($event);">
+</contact-detail>
+						</code></pre>
+					</section>
+					<section>
+						<p><code>contact-new.component.js</code></p>
 						<pre><code class="javascript" data-trim>
 let contactNew = {
   templateUrl: './contact-new.html',
@@ -384,7 +400,59 @@ angular
 						</code></pre>
 					</section>
 					<section>
-						<h3>Componentes como rotas</h3>
+						<p><code>contact-new.controller.js</code></p>
+						<pre><code class="javascript">
+function ContactNewController(ContactService, $state) {
+  let ctrl = this
+  ctrl.$onInit = () => {
+    ctrl.contact = {
+      name: '',
+      email: '',
+      phone: '',
+      job: '',
+      location: '',
+      social: {
+        facebook: '',
+        google: '',
+        github: '',
+        twitter: '',
+        linkedin: ''
+      },
+      tag: 'none'
+    }
+  }
+  ctrl.createNewContact = event => {
+    return ContactService
+      .createNewContact(event.contact)
+      .then(contact => {
+        $state.go('contact', {
+          id: contact.key
+        })
+      })
+  }
+}
+
+angular
+  .module('components.contact')
+  .controller('ContactNewController', ContactNewController)
+						</code></pre>
+					</section>
+					<section>
+						<p>View Component - Edit</p>
+						<img src="img/contact-edit-component.png" alt="">
+					</section>
+					<section>
+						<p><code>contact-edit.html</code></p>
+						<pre><code class="html">
+<contact-detail
+  contact="$ctrl.contact"
+  on-delete="$ctrl.deleteContact($event)"
+  on-update="$ctrl.updateContact($event)">
+</contact-detail>
+						</code></pre>
+					</section>
+					<section>
+						<p><code>contact-edit.component.js</code></p>
 						<pre><code class="javascript" data-trim>
 let contactEdit = {
   bindings: {
@@ -412,6 +480,703 @@ angular
       })
   })
 						</code></pre>
+					</section>
+					<section>
+						<p><code>contact-edit.controller.js</code></p>
+						<pre><code class="javascript" data-trim>
+function ContactEditController($state, ContactService, $window) {
+  let ctrl = this
+
+  ctrl.updateContact = event => {
+    return ContactService
+      .updateContact(event.contact)
+  }
+  ctrl.deleteContact = event => {
+    let message = `Apagar ${event.contact.name} dos seus contatos?`
+    if ($window.confirm(message)) {
+      return ContactService
+        .deleteContact(event.contact)
+        .then(() => {
+          $state.go('contacts')
+        })
+    }
+  }
+}
+
+angular
+  .module('components.contact')
+  .controller('ContactEditController', ContactEditController)
+						</code></pre>
+					</section>
+					<section>
+						<p>View Component - Detail</p>
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<p style="text-align: center">new</p>
+										<img src="img/contact-new-component.png" alt="">
+									</td>
+									<td>
+										<p style="text-align: center">edit</p>
+										<img src="img/contact-edit-component.png" alt="">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<p style="text-align: center">Reuso de contact detail em new e edit</p>
+					</section>
+					<section>
+						<p><code>contact-detail.html</code></p>
+						<pre><code class="html" data-trim>
+<div class="contact">
+  <form name="contactDetailForm" novalidate>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-info">
+          <i class="glyphicon glyphicon-alert"></i>
+          Os campos obrigatórios estão marcados em amarelo.
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 navbar">
+        <contact-tag
+          tag="$ctrl.contact.tag"
+          on-change="$ctrl.tagChange($event);">
+        </contact-tag>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div
+          class="form-group">
+          <label>
+            Nome
+          </label>
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            validate-class="{success: 'has-success', error: 'has-error', warning: 'has-warning'}"
+            minlength="8"
+            required
+            ng-change="$ctrl.updateContact();"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.name">
+        </div>
+        <div
+          class="form-group">
+          <label>
+            Telefone
+          </label>
+          <input
+            type="tel"
+            name="phone"
+            class="form-control"
+            validate-class="{success: 'has-success', error: 'has-error', warning: 'has-warning'}"
+            minlength="8"
+            required
+            ng-change="$ctrl.updateContact();"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.phone">
+        </div>
+        <div
+          class="form-group">
+          <label>
+            Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            validate-class="{success: 'has-success', error: 'has-error', warning: 'has-warning'}"
+            required
+            ng-change="$ctrl.updateContact();"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.email">
+        </div>
+        <div class="form-group">
+          <label>
+            Profissão
+          </label>
+          <input
+            type="text"
+            name="jobTitle"
+            class="form-control"
+            ng-change="$ctrl.updateContact();"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.job">
+        </div>
+        <div class="form-group">
+          <label>
+            Endereço
+          </label>
+          <input
+            type="text"
+            name="location"
+            class="form-control"
+            ng-change="$ctrl.updateContact();"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.location">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>
+            Facebook
+          </label>
+          <input
+            type="url"
+            name="facebook"
+            class="form-control"
+            validate-class="{success: 'has-success', 'error': 'has-error'}"
+            ng-change="$ctrl.updateContact();"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.social.facebook">
+        </div>
+        <div class="form-group">
+          <label>
+            Google+
+          </label>
+          <input
+            type="url"
+            name="google"
+            class="form-control"
+            validate-class="{success: 'has-success', 'error': 'has-error'}"
+            ng-change="$ctrl.updateContact();"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.social.google">
+        </div>
+        <div class="form-group">
+          <label>
+            GitHub
+          </label>
+          <input
+            type="url"
+            name="github"
+            class="form-control"
+            validate-class="{success: 'has-success', 'error': 'has-error'}"
+            ng-change="$ctrl.updateContact();"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.social.github">
+        </div>
+        <div class="form-group">
+          <label>
+            Twitter
+          </label>
+          <input
+            type="url"
+            name="twitter"
+            class="form-control"
+            validate-class="{success: 'has-success', 'error': 'has-error'}"
+            ng-change="$ctrl.updateContact();"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.social.twitter">
+        </div>
+        <div class="form-group">
+          <label>
+            LinkedIn
+          </label>
+          <input
+            type="url"
+            name="linkedin"
+            class="form-control"
+            validate-class="{success: 'has-success', 'error': 'has-error'}"
+            ng-change="$ctrl.updateContact();"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.social.linkedin">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 navbar text-right">
+        <button class="btn btn-warning" type="reset">
+          <i class="glyphicon glyphicon-remove"></i>
+          Limpar
+        </button>
+        <button
+          ng-if="$ctrl.isNewContact"
+          class="btn btn-success"
+          ng-disabled="contactDetailForm.$invalid"
+          ng-click="$ctrl.saveContact();">
+          <i class="fa fa-check"></i>
+          Salvar contato
+        </button>
+        <button
+          ng-if="!$ctrl.isNewContact"
+          class="btn btn-danger"
+          ng-click="$ctrl.deleteContact();">
+          <i class="fa fa-trash-o"></i>
+          Apagar contato
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+						</code></pre>
+						<aside class="notes">
+							Explicar o ng-if nos botões para comparação de new ou edit
+						</aside>
+					</section>
+					<section>
+						<p><code>contact-detail.component.js</code></p>
+						<pre><code class="javascript" data-trim>
+let contactDetail = {
+  bindings: {
+    contact: '<',
+    onSave: '&',
+    onUpdate: '&',
+    onDelete: '&'
+  },
+  templateUrl: './contact-detail.html',
+  controller: 'ContactDetailController'
+}
+
+angular
+  .module('components.contact')
+  .component('contactDetail', contactDetail)
+						</code></pre>
+					</section>
+					<section>
+						<p><code>contact-detail.controller.js</code></p>
+						<pre><code class="javascript" data-trim>
+function ContactDetailController() {
+  let ctrl = this
+  ctrl.$onInit = () => {
+    ctrl.isNewContact = !ctrl.contact.$id
+  }
+  ctrl.saveContact = () => {
+    ctrl.onSave({
+      $event: {
+        contact: ctrl.contact
+      }
+    })
+  }
+  ctrl.updateContact = () => {
+    ctrl.onUpdate({
+      $event: {
+        contact: ctrl.contact
+      }
+    })
+  }
+  ctrl.deleteContact = () => {
+    ctrl.onDelete({
+      $event: {
+        contact: ctrl.contact
+      }
+    })
+  }
+  ctrl.tagChange = event => {
+    ctrl.contact.tag = event.tag
+    ctrl.updateContact()
+  }
+}
+
+angular
+  .module('components.contact')
+  .controller('ContactDetailController', ContactDetailController)
+						</code></pre>
+					</section>
+					<section>
+						<p>View Component - Contacts</p>
+						<img src="img/app-lg.png" alt="">
+					</section>
+					<section>
+						<p><code>contacts.html</code></p>
+						<pre><code class="html" data-trim>
+<search
+  search="$ctrl.search"
+  on-update="$ctrl.updateSearch($event)"
+  on-clear="$ctrl.updateSearch($event)">
+</search>
+<div class="row" ng-if="$ctrl.filteredContacts.length">
+  <div class="col-md-3" ng-repeat="contact in $ctrl.filteredContacts | filter: $ctrl.search">
+    <contact
+      contact="contact"
+      content="half"
+      on-select="$ctrl.goToContact($event)"
+      on-open="$ctrl.openModalContact($event)">
+    </contact>
+  </div>
+</div>
+<div
+  class="alert alert-warning"
+  ng-if="!$ctrl.filteredContacts.length">
+  <i class="glyphicon glyphicon-alert"></i>
+  Nenhum contato foi marcado com esta etiqueta ainda...
+</div>
+<div class="modal fade" id="modalContact" tabindex="-1" role="dialog" aria-labelledby="modalContact" data-backdrop="false">
+  <div class="modal-dialog modal-md" role="document">
+    <contact
+      contact="$ctrl.contactView"
+      content="full"
+      on-select="$ctrl.goToContact($event)">
+    </contact>
+    <div class="text-center">
+      <button type="button" class="modal-close btn btn-default pull-right" data-dismiss="modal" aria-label="Close">
+        <i class="glyphicon glyphicon-remove text-warning"></i>
+      </button>
+    </div>
+  </div>
+</div>
+						</code></pre>
+						<aside class="notes">
+							Mostrar reuso do componente <strong>contact</strong> no repeat e na modal
+						</aside>
+					</section>
+					<section>
+						<p><code>contacts.component.js</code></p>
+						<pre><code class="javascript" data-trim>
+let contacts = {
+  bindings: {
+    contacts: '<',
+    filter: '<'
+  },
+  templateUrl: './contacts.html',
+  controller: 'ContactsController'
+}
+
+angular
+  .module('components.contact')
+  .component('contacts', contacts)
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('contacts', {
+        parent: 'app',
+        url: '/contacts?filter',
+        component: 'contacts',
+        params: {
+          filter: {
+            value: 'none'
+          }
+        },
+        resolve: {
+          contacts: function (ContactService) {
+            return ContactService.getContactList().$loaded()
+          },
+          filter: function ($transition$) {
+            return $transition$.params()
+          }
+        }
+      })
+  })
+						</code></pre>
+					</section>
+					<section>
+						<p><code>contacts.controller.js</code></p>
+						<pre><code class="javascript" data-trim>
+function ContactsController($filter, $state) {
+  let ctrl = this
+  let filtrate = () => {
+    return $filter('contactsFilter')(ctrl.contacts, ctrl.filter)
+  }
+  ctrl.$onInit = () => {
+    ctrl.contacts.$watch(() => {
+      ctrl.filteredContacts = filtrate()
+    })
+    ctrl.filteredContacts = filtrate()
+  }
+  ctrl.updateSearch = event => {
+    ctrl.search = event.search
+  }
+  ctrl.openModalContact = event => {
+    ctrl.contactView = event.contact
+    $('#modalContact').modal('show')
+  }
+  ctrl.goToContact = event => {
+    $state.go('contact', {
+      id: event.contactId
+    })
+  }
+}
+
+angular
+  .module('components.contact')
+  .controller('ContactsController', ContactsController)
+						</code></pre>
+					</section>
+					<section>
+						<p><code>contacts.filter.js</code></p>
+						<pre><code class="javascript" data-trim>
+function contactsFilter() {
+  return (collection, params) => {
+    return collection.filter(item => {
+      return item.tag.state === (
+        params.filter === 'none' ? item.tag.state : params.filter
+      )
+    })
+  }
+}
+
+angular
+  .module('components.contact')
+  .filter('contactsFilter', contactsFilter)
+						</code></pre>
+					</section>
+					<section>
+						<h1>App</h1>
+					</section>
+					<section>
+						<p><code>index.html</code></p>
+						<pre><code class="html" data-trim>
+&lt;!doctype html&gt;
+&lt;html ng-app="root"&gt;
+  &lt;head&gt;
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agenda de contatos</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/style.css">
+  &lt;/head&gt;
+  &lt;body&gt;
+    <root>
+      <span class="loader">Carregando...</span>
+    </root>
+    <script src="js/vendor.js"></script>
+    <script src="js/bundle.js"></script>
+  &lt;/body&gt;
+&lt;/html&gt;
+						</code></pre>
+					</section>
+					<section>
+						<p><code>root.html</code></p>
+						<pre><code class="html" data-trim>
+<div ui-view></div>
+						</code></pre>
+					</section>
+					<section>
+						<p><code>root.component.js</code></p>
+						<pre><code class="javascript" data-trim>
+let root = {
+  templateUrl: './root.html'
+}
+
+angular
+  .module('root')
+  .component('root', root)
+						</code></pre>
+					</section>
+					<section>
+						<p><code>app.html</code></p>
+						<pre><code class="html" data-trim>
+<app-nav user="$ctrl.user" on-logout="$ctrl.logout();"></app-nav>
+<div class="container-fluid">
+  <div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-sm-9">
+      <div ui-view></div>
+    </div>
+    <div class="col-sm-3 sidebar-offcanvas" id="sidebar">
+      <app-sidebar></app-sidebar>
+    </div>
+  </div>
+</div>
+						</code></pre>
+						<aside class="notes">
+							Apontar uso da app-nav e app-sidebar
+						</aside>
+					</section>
+					<section>
+						<p><code>app-nav.html</code></p>
+						<pre><code class="html" data-trim>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a ui-sref="contacts({filter: none})" class="navbar-brand">Agenda de contatos</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <a ui-sref="new">
+            <i class="glyphicon glyphicon-plus"></i>
+            Novo contato
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="glyphicon glyphicon-user"></i>
+            <span ng-bind="$ctrl.user.email"></span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="" ng-click="$ctrl.onLogout()">
+                <i class="glyphicon glyphicon-log-out"></i>
+                Sair
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<a class="btn btn-success btn-lg float" ng-click="$ctrl.offcanvas()">
+  <i class="glyphicon glyphicon-list-alt"></i>
+  <i class="glyphicon glyphicon-resize-horizontal"></i>
+</a>
+						</code></pre>
+					</section>
+					<section>
+						<p><code>app-sidebar.html</code></p>
+						<pre><code class="html" data-trim>
+<aside class="panel panel-default">
+  <div class="panel-heading">
+    <i class="glyphicon glyphicon-tag"></i>
+    Etiquetas
+  </div>
+  <contact-tags
+    class="tags"
+    contact-tags="$ctrl.contactTags"
+    on-select="$ctrl.selectTag($event)">
+  </contact-tags>
+  <div class="panel-body">
+    <contact-tag-detail
+      tag="$ctrl.tag"
+      on-save="$ctrl.createNewTag($event)"
+      on-delete="$ctrl.deleteTag($event)"
+      on-update="$ctrl.updateTag($event)">
+    </contact-tag-detail>
+  </div>
+</aside>
+						</code></pre>
+					</section>
+					<section style="font-size: 2.4em">
+						<p>Serverless</p>
+						<img src="img/firebase.svg" style="max-width: 30%; margin: 0 -0.5em 0 -1.2em; border:0; background-color: transparent; vertical-align: middle; box-shadow: none">
+						Firebase
+					</section>
+					<section>
+						<p><code>contacts.service.js</code></p>
+						<pre><code class="javascript" data-trim>
+function ContactService(AuthService, $firebaseRef, $firebaseArray, $firebaseObject) {
+  let ref = $firebaseRef.contacts
+  let uid = AuthService.getUser().uid
+  return {
+    createNewContact: function (contact) {
+      return $firebaseArray(ref.child(uid)).$add(contact)
+    },
+    getContactById: function (id) {
+      return $firebaseObject(ref.child(uid).child(id))
+    },
+    getContactList: function () {
+      return $firebaseArray(ref.child(uid))
+    },
+    updateContact: function (contact) {
+      return contact.$save()
+    },
+    deleteContact: function (contact) {
+      return contact.$remove()
+    }
+  }
+}
+
+angular
+  .module('components.contact')
+  .factory('ContactService', ContactService)
+						</code></pre>
+					</section>
+					<section>
+						<h3>Legal, vamos ver funcionando...</h3>
+						<a href="http://guiseek.js.org/contacts-schedule/public/" target="_blank">Demonstração</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Captou minha mensagem?!</h3>
+						<h2>
+							<img src="img/duvidas.png" style="border: 0; max-width: 30%; box-shadow: none; vertical-align: middle; margin-right: 5%" alt="">
+							Dúvidas?
+						</h2>
+					</section>
+					<section>
+						<div style="text-align: left">
+							<h3>Como me encontrar?</h3>
+							<p>
+								<img src="img/github.svg" style="border: 0; max-width: 10%; box-shadow: none; vertical-align: middle; margin-right: 5%">
+								<a href="https://github.com/guiseek">https://github.com/guiseek</a>
+							</p>
+							<p>
+								<img src="img/facebook.svg" style="border: 0; max-width: 10%; box-shadow: none; vertical-align: middle; margin-right: 5%">
+								<a href="https://www.facebook.com/guiseek">https://www.facebook.com/guiseek</a>
+							</p>
+							<p>
+								<img src="img/gmail.svg" style="border: 0; max-width: 10%; box-shadow: none; vertical-align: middle; margin-right: 5%">
+								<a href="guiseek@gmail.com">guiseek@gmail.com</a>
+							</p>
+							<p>
+								<img src="img/whatsapp.svg" style="border: 0; max-width: 10%; box-shadow: none; vertical-align: middle; margin-right: 5%">
+								<a href="tel:44 99840 2726">44 99840 2726</a>
+							</p>
+						</div>
 					</section>
 				</section>
 			</div>
