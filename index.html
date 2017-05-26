@@ -297,16 +297,16 @@ angular
 				</section>
 				<section>
 					<section>
-						<h2>Aplicações baseada em componentes</h2>
+						<h2>Aplicação orientada a componentes</h2>
 					</section>
 					<section>
-						<h3>Componentes controlam apenas seus próprios dados e view</h3>
+						<h4>Componentes controlam apenas <br> seus próprios dados e view</h4>
 						<aside class="notes">
 							Nunca devem modificar quaisquer dados ou DOM que estejam fora do seu próprio âmbito.
 						</aside>
 					</section>
 					<section>
-						<h3>Entradas e Saídas</h3>
+						<h4>Entrada e Saída <i>(bindings)</i></h4>
 						<table>
 							<tbody>
 								<tr>
@@ -323,13 +323,373 @@ angular
 								</tr>
 								<tr>
 									<td><code>{prop: '&'}</code></td>
-									<td>Eventos de saída</td>
+									<td>Evento de saída</td>
 								</tr>
 							</tbody>
 						</table>
 					</section>
+          <section>
+            <h3>Estrutura da aplicação</h3>
+          </section>
+					<section>
+            <h4>Componentes comuns</h4>
+            <ul>
+              <li>app</li>
+              <li>app-nav</li>
+              <li>app-sidebar</li>
+            </ul>
+					</section>
+					<section>
+            <p>Representação amigável</p>
+            <img src="img/app.png" alt="">
+					</section>
+					<section>
+            <h4>Componentes</h4>
+            <ul>
+              <li>auth</li>
+              <li>search</li>
+              <li>contacts</li>
+              <li>contact</li>
+              <li>...</li>
+            </ul>
+					</section>
+					<section>
+						<h3>Componentes como rotas</h3>
+					</section>
+					<section>
+            <p>Autenticação <i>(auth)</i></p>
+            <img src="img/auth.png" alt="">
+            <aside class="notes">
+              <ul>
+                <li>Auth: componente pai</li>
+                <li>Login ou Register: decide quais os dados de entrada e recebe eventos de saída</li>
+                <li>Auth Form: genérico, serve tanto pra login ou register</li>
+              </ul>
+            </aside>
+					</section>
+					<section>
+						<p><code>auth.component.js</code></p>
+						<pre><code class="javascript" data-trim>
+let auth = {
+  templateUrl: './auth.html'
+}
+
+angular
+  .module('components.auth')
+  .component('auth', auth)
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('auth', {
+        redirectTo: 'auth.login',
+        url: '/auth',
+        component: 'auth'
+      })
+    $urlRouterProvider.otherwise('/auth/login')
+  })
+						</code></pre>
+					</section>
+					<section>
+						<p><code>auth.html</code></p>
+						<pre><code class="html" data-trim>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div ui-view></div>
+    </div>
+  </div>
+</div>
+						</code></pre>
+					</section>
+					<section>
+            <p>Login</p>
+            <img src="img/auth-login.png" alt="">
+            <aside class="notes">
+              <ul>
+                <li>Envia dados caracteristicos de login para o auth-form</li>
+              </ul>
+            </aside>
+					</section>
+					<section>
+            <p>Eventos de login</p>
+            <img src="img/auth-login-events.png" alt="">
+            <aside class="notes">
+              <ul>
+                <li>Troca de informações entre login e auth-form</li>
+              </ul>
+            </aside>
+					</section>
+					<section>
+						<p><code>login.component.js</code></p>
+						<pre><code class="javascript" data-trim>
+let login = {
+  templateUrl: './login.html',
+  controller: 'LoginController'
+}
+
+angular
+  .module('components.auth')
+  .component('login', login)
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('auth.login', {
+        url: '/login',
+        component: 'login'
+      })
+    $urlRouterProvider.otherwise('/auth/login')
+  })
+						</code></pre>
+					</section>
+          <section>
+            <p><code>login.controller.js</code></p>
+            <pre><code class="javascript" data-trim>
+function LoginController(AuthService, $state) {
+  let ctrl = this
+  ctrl.$onInit = () => {
+    ctrl.error = null
+    ctrl.user = {
+      email: '',
+      password: ''
+    }
+  }
+  ctrl.loginUser = event => {
+    return AuthService
+      .login(event.user)
+      .then(() => {
+        $state.go('app')
+      }, reason => {
+        ctrl.error = reason.message
+      })
+  }
+}
+
+angular
+  .module('components.auth')
+  .controller('LoginController', LoginController)
+            </code></pre>
+          </section>
+					<section>
+						<p><code>login.html</code></p>
+						<pre><code class="html" data-trim>
+<h1>Acesso</h1>
+<auth-form
+  user="$ctrl.user"
+  message="{{ $ctrl.error }}"
+  button="Acessar conta"
+  reset="Limpar"
+  on-submit="$ctrl.loginUser($event);">
+</auth-form>
+<div class="alert alert-info">
+  <i class="glyphicon glyphicon-exclamation-sign"></i>
+  <a ui-sref="auth.register">
+    Ainda não tem uma conta? Crie uma agora!
+  </a>
+</div>
+            </code></pre>
+					</section>
+					<section>
+            <p>Register</p>
+            <img src="img/auth-register.png" alt="">
+            <aside class="notes">
+              <ul>
+                <li>Envia dados caracteristicos de register para o auth-form</li>
+              </ul>
+            </aside>
+					</section>
+					<section>
+            <p>Eventos de register</p>
+            <img src="img/auth-register-events.png" alt="">
+            <aside class="notes">
+              <ul>
+                <li>Troca de informações entre register e auth-form</li>
+              </ul>
+            </aside>
+					</section>
+					<section>
+						<p><code>register.component.js</code></p>
+						<pre><code class="javascript" data-trim>
+let register = {
+  templateUrl: './register.html',
+  controller: 'RegisterController'
+}
+
+angular
+  .module('components.auth')
+  .component('register', register)
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('auth.register', {
+        url: '/register',
+        component: 'register'
+      })
+  })
+						</code></pre>
+					</section>
+          <section>
+            <p><code>register.controller.js</code></p>
+            <pre><code class="javascript" data-trim>
+function RegisterController(AuthService, $state) {
+  let ctrl = this
+  ctrl.$onInit = () => {
+    ctrl.error = null
+    ctrl.user = {
+      email: '',
+      password: ''
+    }
+  }
+  ctrl.createUser = event => {
+    return AuthService
+      .register(event.user)
+      .then(() => {
+        $state.go('app')
+      }, reason => {
+        ctrl.error = reason.message
+      })
+  }
+}
+
+angular
+  .module('components.auth')
+  .controller('RegisterController', RegisterController)
+            </code></pre>
+          </section>
+					<section>
+						<p><code>register.html</code></p>
+						<pre><code class="html" data-trim>
+<h1>Cadastro</h1>
+<auth-form
+  user="$ctrl.user"
+  message="{{ $ctrl.error }}"
+  reset="Limpar"
+  button="Criar conta"
+  on-submit="$ctrl.createUser($event);">
+</auth-form>
+<div class="alert alert-info">
+  <i class="glyphicon glyphicon-exclamation-sign"></i>
+  <a ui-sref="auth.login">
+    Já tem uma conta? Faça o login!
+  </a>
+</div>
+            </code></pre>
+					</section>
+					<section>
+            <p>Auth form</p>
+            <img src="img/auth-form.png" alt="">
+            <aside class="notes">
+              <ul>
+                <li>Genérico, serve pra login e register</li>
+                <li>Apenas recebe entradas de customização e emite evento de submit</li>
+              </ul>
+            </aside>
+					</section>
+					<section>
+						<p><code>auth-form.component.js</code></p>
+						<pre><code class="javascript" data-trim>
+let authForm = {
+  bindings: {
+    user: '<',
+    button: '@',
+    reset: '@',
+    message: '@',
+    onSubmit: '&'
+  },
+  templateUrl: './auth-form.html',
+  controller: 'AuthFormController'
+}
+
+angular
+  .module('components.auth')
+  .component('authForm', authForm)
+						</code></pre>
+					</section>
+          <section>
+            <p><code>auth-form.controller.js</code></p>
+            <pre><code class="javascript" data-trim>
+function AuthFormController() {
+  let ctrl = this
+  ctrl.$onChanges = changes => {
+    if (changes.user) {
+      ctrl.user = angular.copy(ctrl.user)
+    }
+  }
+  ctrl.submitForm = () => {
+    ctrl.onSubmit({
+      $event: {
+        user: ctrl.user
+      }
+    })
+  }
+}
+
+angular
+  .module('components.auth')
+  .controller('AuthFormController', AuthFormController)
+            </code></pre>
+          </section>
+					<section>
+						<p><code>auth-form.html</code></p>
+						<pre><code class="html" data-trim>
+<form ng-submit="$ctrl.submitForm()" name="authForm" class="panel panel-default" novalidate>
+  <div class="panel-body">
+    <div ng-if="$ctrl.message" class="alert alert-danger">
+      {{ $ctrl.message }}
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        ng-model="$ctrl.user.email"
+        type="email"
+        name="email"
+        id="email"
+        class="form-control"
+        validate-class="{success: 'has-success', 'error': 'has-error'}"
+        autocomplete="off"
+        required>
+    </div>
+    <div class="form-group">
+      <label for="password">Senha</label>
+      <input
+        ng-model="$ctrl.user.password"
+        type="password"
+        name="password"
+        id="password"
+        class="form-control"
+        validate-class="{success: 'has-success', 'error': 'has-error'}"
+        minlength="6"
+        required>
+    </div>
+    <div class="text-right">
+      <button class="btn btn-warning" type="reset">
+        <i class="glyphicon glyphicon-remove"></i>
+        {{ $ctrl.reset }}
+      </button>
+      <button class="btn btn-info" type="submit" ng-disabled="authForm.$invalid">
+        <i class="glyphicon glyphicon-ok"></i>
+        {{ $ctrl.button }}
+      </button>
+    </div>
+  </div>
+</form>
+						</code></pre>
+					</section>
+					<section>
+            <p>Search e contacts</p>
+            <img src="img/contacts.png" alt="">
+					</section>
+					<section>
+            <p>Eventos entre search e contacts</p>
+            <img src="img/contacts-events.png" alt="">
+					</section>
+					<section>
+            <p>Como acontece...</p>
+            <video autoplay loop>
+              <source data-src="video/search.mov" type="video/mp4" />
+            </video>
+					</section>
 					<section>
 						<h3>Ciclo de vida</h3>
+					</section>
+					<section>
+						<h3>Hooks / Ganchos</h3>
 						<ul>
 							<li>
 								<code>$onInit()</code>
@@ -366,9 +726,6 @@ angular
 								</li>
 							</ol>
 						</aside>
-					</section>
-					<section>
-						<h3>Componentes como rotas</h3>
 					</section>
 					<section>
 						<p>View Component - New</p>
@@ -529,6 +886,11 @@ angular
 							</tbody>
 						</table>
 						<p style="text-align: center">Reuso de contact detail em new e edit</p>
+					</section>
+					<section>
+						<h5>Mesmo caso do login e register com auth-form</h5>
+            <h3>Em new e edit com detail</h3>
+            <h4>Agora com <code>/:id</code> na URL</h4>
 					</section>
 					<section>
 						<p><code>contact-detail.html</code></p>
@@ -1150,12 +1512,16 @@ angular
 					</section>
 					<section>
 						<h3>Legal, vamos ver funcionando...</h3>
-						<a href="http://guiseek.js.org/contacts-schedule/public/" target="_blank">Demonstração</a>
+						<a href="http://localhost:4000/" target="_blank">Demonstração</a>
+            <br>
+            <br>
+            <a href="http://guiseek.js.org/contacts-schedule/public"><small>guiseek.js.org/contacts-schedule/public</small></a>
+						<!--<a href="http://guiseek.js.org/contacts-schedule/public/" target="_blank">Demonstração</a>-->
 					</section>
 				</section>
 				<section>
 					<section>
-						<h3>Captou minha mensagem?!</h3>
+						<h3>Entenderam ? ! ?</h3>
 						<h2>
 							<img src="img/duvidas.png" style="border: 0; max-width: 30%; box-shadow: none; vertical-align: middle; margin-right: 5%" alt="">
 							Dúvidas?
