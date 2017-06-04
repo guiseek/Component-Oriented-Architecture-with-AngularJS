@@ -35,40 +35,62 @@
 				</section>
 				<section>
 					<section>
-						<h1>Conceito</h1>
+						<h2>Web Components</h2>
 					</section>
 					<section>
 						<p>Component-based software engineering (<strong>CBSE</strong>)</p>
 						<p>Component-based development (<strong>CBD</strong>)</p>
+						<p>Event-driven architectures (<strong>EDA</strong>)</p>
+						<aside class="notes">
+              Citada a primeira vez por Malcolm Douglas McIlroy na NATO Conf, em 1968, na talk Mass Produced Software Components (Componentes de software produzidos em massa).
+						</aside>
 					</section>
-					<section>
-						<h3>Separação de responsabilidades</h3>
-					</section>
-					<section>
-						<h3>Reutilização</h3>
+          <section>
+            <h4>Malcolm Douglas McIlroy</h4>
+            <img src="img/mcilroy.jpeg" alt="">
+          </section>
+          <section>
+            <h3>Primeira implementação</h3>
+            <p>No <strong>Unix</strong> como <strong>Pipelines</strong></p>
 						<aside class="notes">
 							<ol>
 								<li>
-									Abordagem baseada na reutilização para definir, implementar e compor componentes independentes ligeiramente acoplados.
+                  Sequência de processos encadeados.
 								</li>
 								<li>
-									Benefícios de curto e longo prazo para o software e organizações que o patrocinam.
+                  Cada saída de processo alimenta a entrada para o próximo.
 								</li>
 							</ol>
 						</aside>
-					</section>
+          </section>
+          <section>
+            <h3>O termo <strong>Web Components</strong></h3>
+            <h3>Lembram do Ajax?!</h3>
+            <p>AJAX = <strong>A</strong>synchronous <strong>J</strong>avaScript <strong>A</strong>nd <strong>X</strong>ML</p>
+            <aside class="notes">
+              Nova coleção de recursos que, quando utilizados juntos permitem o dev criar componentes reutilizáveis de modo padrão.
+            </aside>
+          </section>
+          <section>
+            <h2>Por que usar?</h2>
+          </section>
 					<section>
-						<p>Event-driven architectures (<strong>EDA</strong>)</p>
+						<h3>Reutilização</h3>
 						<aside class="notes">
-							Os componentes podem produzir e/ou consumir eventos.
+							Abordagem baseada na reutilização para definir, implementar e compor componentes independentes ligeiramente acoplados.
 						</aside>
 					</section>
-				</section>
-				<section>
 					<section>
-						<h2>Web Components</h2>
+						<h3>Separação de responsabilidades</h3>
+            <aside class="notes">
+							Benefícios de curto e longo prazo para o software e organizações que o patrocinam.
+            </aside>
 					</section>
+          <section>
+            <h2>Não é apenas JavaScript</h2>
+          </section>
 					<section>
+            <h3>Camadas</h3>
 						<ul>
 							<li>
 								Templates
@@ -88,33 +110,71 @@
 						</ul>
 					</section>
 					<section>
-						<h3>Templates</h3>
+						<h2>Templates</h2>
 						<aside class="notes">
 							View (HTML e CSS) e lógica de integração.
 						</aside>
 					</section>
 					<section>
-						<h3>Decorators</h3>
+						<h2>Decorators</h2>
 						<aside class="notes">
 							Comportamento individual, estático ou visual, sem afetar comportamentos de outros elementos.
 						</aside>
 					</section>
 					<section>
-						<h3>Custom elements</h3>
+						<h2>Custom elements</h2>
 						<aside class="notes">
 							Nomes e scripts criados pelo desenvolvedor.
 						</aside>
 					</section>
 					<section>
-						<h3>Shadow DOM</h3>
+						<h2>Shadow DOM</h2>
 						<aside class="notes">
 							Parte do código encapsulada e escondida pelo navegador.
 						</aside>
 					</section>
 					<section>
-						<h3>Imports</h3>
+						<h2>Imports</h2>
 						<aside class="notes">
 							Custom elements empacotados e lidos como recurso.
+						</aside>
+					</section>
+					<section>
+						<h1>Ciclo de vida</h1>
+						<aside class="notes">
+							Ganchos
+						</aside>
+					</section>
+					<section>
+						<ul>
+							<li>
+								<code>createdCallback</code>
+							</li>
+							<li>
+								<code>attachedCallback</code>
+							</li>
+							<li>
+								<code>detachedCallback</code>
+							</li>
+							<li>
+								<code>attributeChangedCallback</code>
+							</li>
+						</ul>
+						<aside class="notes">
+							<ol>
+								<li>
+									createdCallback: instância é criada.
+								</li>
+								<li>
+									attachedCallback: elemento é anexado ao DOM.
+								</li>
+								<li>
+									detachedCallback: elemento é removido do DOM.
+								</li>
+								<li>
+									attributeChangedCallback: atributo do elemento é alterado. Callback com 3 args, nome, oldValue e newValue.
+								</li>
+							</ol>
 						</aside>
 					</section>
 				</section>
@@ -686,7 +746,7 @@ angular
             </video>
 					</section>
 					<section>
-						<h3>Ciclo de vida</h3>
+						<h1>Ciclo de vida</h1>
 					</section>
 					<section>
 						<h3>Hooks / Ganchos</h3>
