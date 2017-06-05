@@ -26,16 +26,11 @@
 			<div class="slides">
 				<section>
 					<h2>Arquitetura Orientada a Componentes</h2>
-					<div>
-						<a href="https://docs.angularjs.org/guide/component">
-							<img src="img/angularjs.svg" style="border: 0; box-shadow: none; max-width: 30%; background-color: transparent">
-						</a>
-					</div>
 					<a href="http://guiseek.js.org">@guiseek</a>
 				</section>
 				<section>
 					<section>
-						<h2>Web Components</h2>
+						<h1>Components</h1>
 					</section>
 					<section>
 						<p>Component-based software engineering (<strong>CBSE</strong>)</p>
@@ -63,6 +58,14 @@
 							</ol>
 						</aside>
           </section>
+				</section>
+        <section>
+          <section>
+            <h1>Web Components</h1>
+            <a href="https://www.webcomponents.org/">
+  						<img src="img/web-components.svg" style="border:0; background-color: transparent; vertical-align: middle; box-shadow: none">
+            </a>
+          </section>
           <section>
             <h3>O termo <strong>Web Components</strong></h3>
             <h3>Lembram do Ajax?!</h3>
@@ -72,25 +75,32 @@
             </aside>
           </section>
           <section>
-            <h2>Por que usar?</h2>
+            <h1>Por que usar?!</h1>
+						<img src="img/advantage.svg" style="max-width: 30%; border:0; background-color: transparent; vertical-align: middle; box-shadow: none">
           </section>
 					<section>
-						<h3>Reutilização</h3>
+						<h3>Reuso</h3>
+						<img src="img/recycle-file.svg" style="max-width: 30%; border:0; background-color: transparent; vertical-align: middle; box-shadow: none">
 						<aside class="notes">
-							Abordagem baseada na reutilização para definir, implementar e compor componentes independentes ligeiramente acoplados.
+              Reuso de código e tempo.
+              <br>
+							Benefícios de curto e longo prazo para o software e organizações que o patrocinam.
 						</aside>
 					</section>
 					<section>
-						<h3>Separação de responsabilidades</h3>
+						<h4>Divisão de responsabilidades</h4>
+            <img src="img/responsibility.svg" style="max-width: 30%; border:0; background-color: transparent; vertical-align: middle; box-shadow: none" alt="Separação de responsabilidades">
             <aside class="notes">
-							Benefícios de curto e longo prazo para o software e organizações que o patrocinam.
+              Separação de responsabilidades
+              <br>
+							Abordagem baseada na reutilização para definir, implementar e compor componentes independentes ligeiramente acoplados.
             </aside>
 					</section>
-          <section>
-            <h2>Não é apenas JavaScript</h2>
-          </section>
 					<section>
             <h3>Camadas</h3>
+						<img src="img/interface.svg" style="max-width: 30%; border:0; background-color: transparent; vertical-align: middle; box-shadow: none">
+          </section>
+					<section>
 						<ul>
 							<li>
 								Templates
@@ -141,6 +151,7 @@
 					</section>
 					<section>
 						<h1>Ciclo de vida</h1>
+						<img src="img/lifecycle.svg" style="max-width: 30%; border:0; background-color: transparent; vertical-align: middle; box-shadow: none">
 						<aside class="notes">
 							Ganchos
 						</aside>
@@ -180,32 +191,70 @@
 				</section>
 				<section>
 					<section>
+						<h1>Ciclo de vida</h1>
+						<img src="img/lifecycle.svg" style="max-width: 30%; border:0; background-color: transparent; vertical-align: middle; box-shadow: none">
+						<aside class="notes">
+							Ganchos
+						</aside>
+					</section>
+          <section>
+            <table>
+              <tr>
+                <th>Web Component</th>
+                <th>AngularJS Component</th>
+              </tr>
+              <tr>
+                <td>
+                  <code>createdCallback</code>
+                </td>
+                <td>
+                  <code>$onInit</code>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>attachedCallback</code>
+                </td>
+                <td>
+                  <code>$postLink</code>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>attributeChangedCallback</code>
+                </td>
+                <td>
+                  <code>$onChanges</code>, <code>$doCheck</code>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>detachedCallback</code>
+                </td>
+                <td>
+                  <code>$onDestroy</code>
+                </td>
+              </tr>
+            </table>
+          </section>
+				</section>
+				<section>
+					<section>
 						<h2>AngularJS .Component</h2>
+            <div>
+              <a href="https://docs.angularjs.org/guide/component">
+                <img src="img/angularjs.svg" style="border: 0; box-shadow: none; max-width: 30%; background-color: transparent">
+              </a>
+            </div>
 					</section>
 					<section>
 						<h3>Compreendendo</h3>
-						<ul>
-							<li>
-								Configuração simples e adequada para uma estrutura baseada em componentes.
-							</li>
-							<li>
-								Facilita a escrita de uma aplicação de forma semelhante à utilização de Web Components.
-							</li>
-						</ul>
-					</section>
-					<section>
-						<h3>Vantagens</h3>
-						<ul>
-							<li>
-								Configuração simples
-							</li>
-							<li>
-								Promove padrões e práticas recomendadas
-							</li>
-							<li>
-								Otimizado para arquitetura baseada em componentes
-							</li>
-						</ul>
+            <p>
+  						Configuração simples e adequada para uma estrutura baseada em componentes.
+            </p>
+            <p>
+              Facilita a escrita de uma aplicação de forma semelhante à utilização de Web Components.
+            </p>
 					</section>
 					<section>
 						<h3>Criando e configurando</h3>
@@ -223,7 +272,7 @@
 						</ul>
 					</section>
 					<section>
-						<h3>Exemplo <i>(component)</i></h3>
+						<h4>Component</h4>
 						<pre><code class="javascript" data-trim>
 let search = {
   bindings: {
@@ -241,7 +290,7 @@ angular
 						</code></pre>
 					</section>
 					<section>
-						<h3>Exemplo <i>(template)</i></h3>
+						<h4>Template</h4>
 						<pre><code class="html" data-trim>
 <div class="navbar">
   <div class="input-group">
@@ -264,7 +313,7 @@ angular
 						</code></pre>
 					</section>
 					<section>
-						<h3>Exemplo <i>(controller)</i></h3>
+						<h4>Controller</h4>
 						<pre><code class="javascript" data-trim>
 function SearchController() {
   let ctrl = this
@@ -283,40 +332,13 @@ angular
 						</code></pre>
 					</section>
 					<section>
-						<h3>Exemplo de uso <i>(template)</i></h3>
-						<pre><code class="html" data-trim>
-<search
+						<h4>Usando</h4>
+						<pre><code class="html" data-trim data-noescape>
+&lt;search
   search="$ctrl.search"
   on-update="$ctrl.updateSearch($event)"
   on-clear="$ctrl.updateSearch($event)">
-</search>
-<div ng-if="$ctrl.filteredContacts.length" class="row">
-  <div ng-repeat="contact in $ctrl.filteredContacts | filter: $ctrl.search" class="col-md-3">
-    <contact
-      contact="contact"
-      on-select="$ctrl.goToContact($event)"
-      on-open="$ctrl.openModalContact($event)">
-    </contact>
-  </div>
-</div>
-						</code></pre>
-					</section>
-					<section>
-						<h3>Exemplo de uso <i>(controller)</i></h3>
-						<pre><code class="javascript" data-trim>
-function ContactsController($filter) {
-  let ctrl = this
-  ctrl.$onInit = () => {
-    ctrl.filteredContacts = $filter('contactsFilter')(ctrl.contacts, ctrl.filter)
-  }
-  ctrl.updateSearch = event => {
-    ctrl.search = event.search
-  }
-}
-
-angular
-  .module('components.contact')
-  .controller('ContactsController', ContactsController)
+&lt;/search>
 						</code></pre>
 					</section>
 					<section>
@@ -324,32 +346,28 @@ angular
 						<table>
 							<tbody>
 								<tr>
-									<td>bindings</td>
+									<td><code>bindings</code></td>
 									<td>Ligação com o controller</td>
 								</tr>
 								<tr>
-									<td>controller</td>
+									<td><code>controller</code></td>
 									<td>Default: <code>function() {}</code></td>
 								</tr>
 								<tr>
-									<td>controllerAs</td>
+									<td><code>controllerAs</code></td>
 									<td>Default: <code>$ctrl</code></td>
 								</tr>
 								<tr>
-									<td>template</td>
+									<td><code>template</code></td>
 									<td>Injetável</td>
 								</tr>
 								<tr>
-									<td>templateUrl</td>
+									<td><code>templateUrl</code></td>
 									<td>Injetável</td>
 								</tr>
 								<tr>
-									<td>transclude</td>
+									<td><code>transclude</code></td>
 									<td>Default <code>false</code></td>
-								</tr>
-								<tr>
-									<td>require</td>
-									<td></td>
 								</tr>
 							</tbody>
 						</table>
