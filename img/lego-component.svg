@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="698"
+   height="600"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="lego-component.svg">
+  <defs
+     id="defs92" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1276"
+     inkscape:window-height="681"
+     id="namedview90"
+     showgrid="false"
+     inkscape:zoom="0.63230311"
+     inkscape:cx="354.63938"
+     inkscape:cy="397.06036"
+     inkscape:window-x="0"
+     inkscape:window-y="638"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g7" />
+  <title
+     id="title4">lego</title>
+  <metadata
+     id="metadata2835">image/svg+xmlLegoBlocks brunurb2007-11-14brunurbThis work is hereby released into the Public Domain. To view a copy of the public domain dedication, visit http://creativecommons.org/licenses/publicdomain/ or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.openclipart.orgopenclipart.orglegoblockbrickplasticplaygametoykidchildrenpuzzlebuildLego type construction bricks<rdf:RDF>
+  <cc:Work
+     rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type
+       rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+    <dc:title>lego</dc:title>
+  </cc:Work>
+</rdf:RDF>
+</metadata>
+  <g
+     id="g7"
+     transform="translate(0,-200.90808)">
+    <title
+       id="title9">Layer 1</title>
+    <g
+       transform="matrix(2.0905707,0,0,2.0905707,-535.79342,-1040.2355)"
+       id="g3245">
+      <g
+         transform="matrix(5.72445,0,0,5.72445,-1262.68,-2786.68)"
+         id="g3164"
+         style="fill:#002ec4">
+        <path
+           id="path3166"
+           d="m 266.56531,604.39313 0,22.50104 25.181,10.17999 0,-22.50202 -25.181,-10.17901 z"
+           inkscape:connector-curvature="0"
+           style="fill:#002ec4" />
+      </g>
+      <g
+         transform="matrix(5.72445,0,0,5.72445,-1262.68,-2786.68)"
+         id="g3168"
+         style="fill:#2da6ff">
+        <path
+           id="path3170"
+           d="m 322.5513,627.27118 0,-21.76001 -30.93899,9.19501 0,22.50097 30.93899,-9.93597 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         transform="matrix(5.72445,0,0,5.72445,-1262.68,-2786.68)"
+         id="g3172"
+         style="fill:#2da6ff">
+        <path
+           id="path3174"
+           d="m 266.56531,604.66113 31.19202,-9.19195 24.79397,10.04199 -30.80499,9.46197 -25.181,-10.31201 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         transform="matrix(5.72445,0,0,5.72445,-1262.68,-2786.68)"
+         id="g3176"
+         style="fill:#002ec4">
+        <path
+           id="path3178"
+           d="m 286.92532,605.99915 0,4.55401 c 2.40998,2.14301 10.71298,2.01001 12.72299,-0.268 l 0,-4.68799 -12.72299,0.40198 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         transform="matrix(5.72445,0,0,5.72445,-1262.68,-2786.68)"
+         id="g3180"
+         style="fill:#2da6ff">
+        <path
+           id="path3182"
+           d="m 286.92532,605.66516 c 0,-0.85004 2.84799,-1.54004 6.36099,-1.54004 3.51401,0 6.36201,0.69 6.36201,1.54004 0,0.85101 -2.848,1.53998 -6.36201,1.53998 -3.51299,0 -6.36099,-0.68897 -6.36099,-1.53998 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         transform="matrix(5.72445,0,0,5.72445,-1262.68,-2786.68)"
+         id="g3188"
+         style="fill:#002ec4">
+        <path
+           id="path3190"
+           d="m 302.79532,601.37817 0,4.55396 c 2.41098,2.14404 10.71399,2.01001 12.72299,-0.26697 l 0,-4.68799 -12.72299,0.401 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         transform="matrix(5.72445,0,0,5.72445,-1262.68,-2786.68)"
+         id="g3192"
+         style="fill:#2da6ff">
+        <path
+           id="path3194"
+           d="m 302.79532,601.04517 c 0,-0.85102 2.84799,-1.54004 6.362,-1.54004 3.513,0 6.36099,0.68902 6.36099,1.54004 0,0.84997 -2.84799,1.53997 -6.36099,1.53997 -3.51401,0 -6.362,-0.69 -6.362,-1.53997 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         transform="matrix(5.72445,0,0,5.72445,-1262.68,-2786.68)"
+         id="g3200"
+         style="fill:#002ec4">
+        <path
+           id="path3202"
+           d="m 289.60632,595.82318 0,4.55396 c 2.41098,2.143 10.71399,2.00903 12.72299,-0.26801 l 0,-4.68799 -12.72299,0.40204 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         transform="matrix(5.72445,0,0,5.72445,-1262.68,-2786.68)"
+         id="g3204"
+         style="fill:#2da6ff">
+        <path
+           id="path3206"
+           d="m 289.60632,595.48914 c 0,-0.84998 2.84799,-1.53998 6.362,-1.53998 3.513,0 6.36099,0.69 6.36099,1.53998 0,0.85101 -2.84799,1.54003 -6.36099,1.54003 -3.51401,0 -6.362,-0.68902 -6.362,-1.54003 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         transform="matrix(5.72445,0,0,5.72445,-1262.68,-2786.68)"
+         id="g3212"
+         style="fill:#002ec4">
+        <path
+           id="path3214"
+           d="m 274.0043,600.31116 0,4.55401 c 2.41101,2.14301 10.71402,2.00897 12.72299,-0.268 l 0,-4.68799 -12.72299,0.40198 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         transform="matrix(5.72445,0,0,5.72445,-1262.68,-2786.68)"
+         id="g3216"
+         style="fill:#2da6ff">
+        <path
+           id="path3218"
+           d="m 274.0043,599.97717 c 0,-0.85101 2.84799,-1.54004 6.362,-1.54004 3.513,0 6.361,0.68903 6.361,1.54004 0,0.85095 -2.848,1.53998 -6.361,1.53998 -3.514,0 -6.362,-0.68903 -6.362,-1.53998 z"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       id="g2860"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#f5fa40">
+      <path
+         id="path2862"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g2872"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#f5fa40">
+      <path
+         id="path2874"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g2884"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#f5fa40">
+      <path
+         id="path2886"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g2896"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#f5fa40">
+      <path
+         id="path2898"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g2908"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#f5fa40">
+      <path
+         id="path2910"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g2920"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#f5fa40">
+      <path
+         id="path2922"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g2932"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#f5fa40">
+      <path
+         id="path2934"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g2944"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#f5fa40">
+      <path
+         id="path2946"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g2968"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#ff212c">
+      <path
+         id="path2970"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g2980"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#ff212c">
+      <path
+         id="path2982"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g2992"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#ff212c">
+      <path
+         id="path2994"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3004"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#ff212c">
+      <path
+         id="path3006"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3016"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#ff212c">
+      <path
+         id="path3018"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3028"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#ff212c">
+      <path
+         id="path3030"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3040"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#ff212c">
+      <path
+         id="path3042"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3052"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#ff212c">
+      <path
+         id="path3054"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3076"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#2da6ff">
+      <path
+         id="path3078"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3088"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#2da6ff">
+      <path
+         id="path3090"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3100"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#2da6ff">
+      <path
+         id="path3102"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3112"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#2da6ff">
+      <path
+         id="path3114"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3124"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#2da6ff">
+      <path
+         id="path3126"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3136"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#2da6ff">
+      <path
+         id="path3138"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3148"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#2da6ff">
+      <path
+         id="path3150"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3160"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#2da6ff">
+      <path
+         id="path3162"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3184"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#2da6ff">
+      <path
+         id="path3186"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3196"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#2da6ff">
+      <path
+         id="path3198"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3208"
+       transform="matrix(5.7244485,0,0,5.7244485,-582.68175,-2300.9683)"
+       style="fill:#2da6ff">
+      <path
+         id="path3210"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       id="g3220"
+       transform="matrix(5.72445,0,0,5.72445,-582.682,-2300.97)"
+       style="fill:#2da6ff">
+      <path
+         id="path3222"
+         transform="translate(-4.83572,-10.4934)"
+         d=""
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>

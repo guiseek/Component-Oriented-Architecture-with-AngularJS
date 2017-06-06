@@ -68,10 +68,13 @@
           </section>
           <section>
             <h3>O termo <strong>Web Components</strong></h3>
-            <h3>Lembram do Ajax?!</h3>
+          </section>
+          <section>
+            <h4>Lembram do <strong>Ajax</strong>?!</h4>
+            <img src="img/lego-resources.svg" style="max-width: 30%; border:0; background-color: transparent; vertical-align: middle; box-shadow: none">
             <p>AJAX = <strong>A</strong>synchronous <strong>J</strong>avaScript <strong>A</strong>nd <strong>X</strong>ML</p>
             <aside class="notes">
-              Nova coleção de recursos que, quando utilizados juntos permitem o dev criar componentes reutilizáveis de modo padrão.
+              Coleção de recursos que, quando utilizados juntos permitem a criação de componentes reutilizáveis.
             </aside>
           </section>
           <section>
@@ -91,14 +94,12 @@
 						<h4>Divisão de responsabilidades</h4>
             <img src="img/responsibility.svg" style="max-width: 30%; border:0; background-color: transparent; vertical-align: middle; box-shadow: none" alt="Separação de responsabilidades">
             <aside class="notes">
-              Separação de responsabilidades
-              <br>
 							Abordagem baseada na reutilização para definir, implementar e compor componentes independentes ligeiramente acoplados.
             </aside>
 					</section>
 					<section>
             <h3>Camadas</h3>
-						<img src="img/interface.svg" style="max-width: 30%; border:0; background-color: transparent; vertical-align: middle; box-shadow: none">
+						<img src="img/layers.svg" style="max-width: 30%; border:0; background-color: transparent; vertical-align: middle; box-shadow: none">
           </section>
 					<section>
 						<ul>
@@ -149,94 +150,6 @@
 							Custom elements empacotados e lidos como recurso.
 						</aside>
 					</section>
-					<section>
-						<h1>Ciclo de vida</h1>
-						<img src="img/lifecycle.svg" style="max-width: 30%; border:0; background-color: transparent; vertical-align: middle; box-shadow: none">
-						<aside class="notes">
-							Ganchos
-						</aside>
-					</section>
-					<section>
-						<ul>
-							<li>
-								<code>createdCallback</code>
-							</li>
-							<li>
-								<code>attachedCallback</code>
-							</li>
-							<li>
-								<code>detachedCallback</code>
-							</li>
-							<li>
-								<code>attributeChangedCallback</code>
-							</li>
-						</ul>
-						<aside class="notes">
-							<ol>
-								<li>
-									createdCallback: instância é criada.
-								</li>
-								<li>
-									attachedCallback: elemento é anexado ao DOM.
-								</li>
-								<li>
-									detachedCallback: elemento é removido do DOM.
-								</li>
-								<li>
-									attributeChangedCallback: atributo do elemento é alterado. Callback com 3 args, nome, oldValue e newValue.
-								</li>
-							</ol>
-						</aside>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h1>Ciclo de vida</h1>
-						<img src="img/lifecycle.svg" style="max-width: 30%; border:0; background-color: transparent; vertical-align: middle; box-shadow: none">
-						<aside class="notes">
-							Ganchos
-						</aside>
-					</section>
-          <section>
-            <table>
-              <tr>
-                <th>Web Component</th>
-                <th>AngularJS Component</th>
-              </tr>
-              <tr>
-                <td>
-                  <code>createdCallback</code>
-                </td>
-                <td>
-                  <code>$onInit</code>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <code>attachedCallback</code>
-                </td>
-                <td>
-                  <code>$postLink</code>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <code>attributeChangedCallback</code>
-                </td>
-                <td>
-                  <code>$onChanges</code>, <code>$doCheck</code>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <code>detachedCallback</code>
-                </td>
-                <td>
-                  <code>$onDestroy</code>
-                </td>
-              </tr>
-            </table>
-          </section>
 				</section>
 				<section>
 					<section>
@@ -249,27 +162,25 @@
 					</section>
 					<section>
 						<h3>Compreendendo</h3>
+            <img src="img/lego-component.svg" style="border: 0; box-shadow: none; max-width: 30%; background-color: transparent" alt="Lego component">
             <p>
+              Pense como se fosse uma peça da aplicação.
+            </p>
+						<aside class="notes">
   						Configuração simples e adequada para uma estrutura baseada em componentes.
-            </p>
-            <p>
+              <br>
               Facilita a escrita de uma aplicação de forma semelhante à utilização de Web Components.
-            </p>
+						</aside>
 					</section>
 					<section>
 						<h3>Criando e configurando</h3>
 						<p>
-							Registrado usando o método <code>.component()</code> retornado de um <code>angular.module()</code> já definido.
+							Registrado usando o método <code>.component()</code> retornado de <code>angular.module()</code>
 						</p>
-						<p>O método <code>.component()</code> requer 2 argumentos:</p>
-						<ul>
-							<li>
-								O nome do componente como <code>string</code>
-							</li>
-							<li>
-								O objeto de configuração como <code>object</code>
-							</li>
-						</ul>
+						<h4>Este requer 2 argumentos:</h4>
+            <p>
+              O nome (<code>string</code>) e configuração (<code>object</code>)
+            </p>
 					</section>
 					<section>
 						<h4>Component</h4>
@@ -291,25 +202,29 @@ angular
 					</section>
 					<section>
 						<h4>Template</h4>
-						<pre><code class="html" data-trim>
-<div class="navbar">
-  <div class="input-group">
-    <span class="input-group-addon" id="search">
-      <i class="glyphicon glyphicon-search"></i>
-    </span>
-    <input
+						<pre><code class="html" data-trim  data-noescape>
+&lt;div class="navbar">
+  &lt;div class="input-group">
+    &lt;span class="input-group-addon" id="search">
+      &lt;i class="glyphicon glyphicon-search">&lt;/i>
+    &lt;/span>
+    &lt;input
       ng-change="$ctrl.updateSearch()"
       ng-model="$ctrl.search"
-			type="text"
-			class="form-control"
+      type="text"
+      class="form-control"
       placeholder="Buscar...">
-    <span class="input-group-btn">
-      <button ng-click="$ctrl.clear()" ng-disabled="!$ctrl.search.length" type="button" class="btn btn-default">
-        <i class="glyphicon glyphicon-remove" ng-class="{'text-warning': $ctrl.search.length}"></i>
-      </button>
-    </span>
-  </div>
-</div>
+    &lt;span class="input-group-btn">
+      &lt;button
+        ng-click="$ctrl.clear()"
+        ng-disabled="!$ctrl.search.length"
+        type="button"
+        class="btn btn-default">
+        &lt;i class="glyphicon glyphicon-remove" ng-class="{'text-warning': $ctrl.search.length}">&lt;/i>
+      &lt;/button>
+    &lt;/span>
+  &lt;/div>
+&lt;/div>
 						</code></pre>
 					</section>
 					<section>
@@ -327,8 +242,7 @@ function SearchController() {
 
 angular
   .module('components.search')
-  .controller('SearchController', SearchController);
-
+  .controller('SearchController', SearchController)
 						</code></pre>
 					</section>
 					<section>
@@ -342,12 +256,12 @@ angular
 						</code></pre>
 					</section>
 					<section>
-						<h3>Opções de configuração</h3>
+						<h4>Opções de configuração</h4>
 						<table>
 							<tbody>
 								<tr>
 									<td><code>bindings</code></td>
-									<td>Ligação com o controller</td>
+									<td>Ligação com o <code>controller</code></td>
 								</tr>
 								<tr>
 									<td><code>controller</code></td>
@@ -372,19 +286,17 @@ angular
 							</tbody>
 						</table>
 					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Aplicação orientada a componentes</h2>
-					</section>
 					<section>
 						<h4>Componentes controlam apenas <br> seus próprios dados e view</h4>
+            <img src="img/control.svg" style="border: 0; box-shadow: none; max-width: 30%; background-color: transparent" alt="Component control">
 						<aside class="notes">
-							Nunca devem modificar quaisquer dados ou DOM que estejam fora do seu próprio âmbito.
+							Nunca devem modificar quaisquer dados ou DOM que estejam fora do seu âmbito.
+              <br>
+							Para isso funcionar, o escopo é isolado.
 						</aside>
 					</section>
 					<section>
-						<h4>Entrada e Saída <i>(bindings)</i></h4>
+						<h4>Entradas e saídas <code>(bindings)</code></h4>
 						<table>
 							<tbody>
 								<tr>
@@ -405,43 +317,98 @@ angular
 								</tr>
 							</tbody>
 						</table>
+						<aside class="notes">
+              Podemos controlar entradas e saídas com as opções que estamos vendo.
+						</aside>
+					</section>
+					<section>
+						<h3>Ciclo de vida</h3>
+						<img src="img/lifecycle.svg" style="max-width: 30%; border:0; background-color: transparent; vertical-align: middle; box-shadow: none">
+						<aside class="notes">
+							Eventos / Gatilhos / Ganchos
+              <br>
+              Ajudantes que mantém o componente vivo e se atualizando com as alterações.
+						</aside>
 					</section>
           <section>
-            <h3>Estrutura da aplicação</h3>
+            <table>
+              <tr>
+                <th>#</th>
+                <th>Web Component</th>
+                <th>AngularJS Component</th>
+              </tr>
+              <tr>
+                <td>1.</td>
+                <td>
+                  <code>createdCallback</code>
+                </td>
+                <td>
+                  <code>$onInit</code>
+                </td>
+              </tr>
+              <tr>
+                <td>2.</td>
+                <td>
+                  <code>attachedCallback</code>
+                </td>
+                <td>
+                  <code>$postLink</code>
+                </td>
+              </tr>
+              <tr>
+                <td>3.</td>
+                <td>
+                  <code>attributeChangedCallback</code>
+                </td>
+                <td>
+                  <code>$onChanges</code>, <code>$doCheck</code>
+                </td>
+              </tr>
+              <tr>
+                <td>4.</td>
+                <td>
+                  <code>detachedCallback</code>
+                </td>
+                <td>
+                  <code>$onDestroy</code>
+                </td>
+              </tr>
+            </table>
+						<aside class="notes">
+							<ol>
+								<li>
+									Instância é criada. | Código de inicialização
+								</li>
+								<li>
+									Elemento é anexado ao DOM. | Elementos e seus filhos ligados, configurar manipuladores de DOM
+								</li>
+								<li>
+									Atributo do elemento é alterado. | Ligações unidirecionais - Em cada ciclo digestivo. Bom para agir sobre mudanças
+								</li>
+								<li>
+									4: elemento é removido do DOM. | Liberar recursos, timers e manipuladores de eventos
+								</li>
+							</ol>
+						</aside>
           </section>
+				</section>
+				<section>
 					<section>
-            <h4>Componentes comuns</h4>
-            <ul>
-              <li>app</li>
-              <li>app-nav</li>
-              <li>app-sidebar</li>
-            </ul>
+						<h4>Aplicação orientada a componentes</h4>
+            <img src="img/lego-app.svg" style="border: 0; box-shadow: none; max-width: 40%; background-color: transparent" alt="Component control">
 					</section>
 					<section>
-            <p>Representação amigável</p>
-            <img src="img/app.png" alt="">
+						<h4>Componentes como <br> rotas e <strong>reuso</strong></h4>
+            <img src="img/route.svg" style="border: 0; box-shadow: none; max-width: 30%; background-color: transparent" alt="Component control">
 					</section>
 					<section>
-            <h4>Componentes</h4>
-            <ul>
-              <li>auth</li>
-              <li>search</li>
-              <li>contacts</li>
-              <li>contact</li>
-              <li>...</li>
-            </ul>
-					</section>
-					<section>
-						<h3>Componentes como rotas</h3>
-					</section>
-					<section>
-            <p>Autenticação <i>(auth)</i></p>
+            <p>Autenticação</p>
             <img src="img/auth.png" alt="">
             <aside class="notes">
               <ul>
                 <li>Auth: componente pai</li>
-                <li>Login ou Register: decide quais os dados de entrada e recebe eventos de saída</li>
-                <li>Auth Form: genérico, serve tanto pra login ou register</li>
+                <li>Login ou Register: troca dados e eventos com Auth Form</li>
+                <li>Auth Form: reusado pra login ou register</li>
               </ul>
             </aside>
 					</section>
@@ -451,7 +418,6 @@ angular
 let auth = {
   templateUrl: './auth.html'
 }
-
 angular
   .module('components.auth')
   .component('auth', auth)
@@ -488,22 +454,12 @@ angular
             </aside>
 					</section>
 					<section>
-            <p>Eventos de login</p>
-            <img src="img/auth-login-events.png" alt="">
-            <aside class="notes">
-              <ul>
-                <li>Troca de informações entre login e auth-form</li>
-              </ul>
-            </aside>
-					</section>
-					<section>
 						<p><code>login.component.js</code></p>
 						<pre><code class="javascript" data-trim>
 let login = {
   templateUrl: './login.html',
   controller: 'LoginController'
 }
-
 angular
   .module('components.auth')
   .component('login', login)
@@ -524,22 +480,13 @@ function LoginController(AuthService, $state) {
   let ctrl = this
   ctrl.$onInit = () => {
     ctrl.error = null
-    ctrl.user = {
-      email: '',
-      password: ''
-    }
+    ctrl.user = { email: '', password: '' }
   }
   ctrl.loginUser = event => {
-    return AuthService
-      .login(event.user)
-      .then(() => {
-        $state.go('app')
-      }, reason => {
-        ctrl.error = reason.message
-      })
+    return AuthService.login(event.user)
+      .then(() => $state.go('app'), reason => ctrl.error = reason.message)
   }
 }
-
 angular
   .module('components.auth')
   .controller('LoginController', LoginController)
@@ -547,22 +494,31 @@ angular
           </section>
 					<section>
 						<p><code>login.html</code></p>
-						<pre><code class="html" data-trim>
-<h1>Acesso</h1>
-<auth-form
+						<pre><code class="html" data-trim data-noscape>
+&lt;h1>Acesso&lt;/h1>
+&lt;auth-form
   user="$ctrl.user"
   message="{{ $ctrl.error }}"
   button="Acessar conta"
   reset="Limpar"
-  on-submit="$ctrl.loginUser($event);">
-</auth-form>
-<div class="alert alert-info">
-  <i class="glyphicon glyphicon-exclamation-sign"></i>
-  <a ui-sref="auth.register">
+  on-submit="$ctrl.loginUser($event)">
+&lt;/auth-form>
+&lt;div class="alert alert-info">
+  &lt;i class="glyphicon glyphicon-exclamation-sign">&lt;/i>
+  &lt;a ui-sref="auth.register">
     Ainda não tem uma conta? Crie uma agora!
-  </a>
-</div>
+  &lt;/a>
+&lt;/div>
             </code></pre>
+					</section>
+					<section>
+            <p>Eventos de login</p>
+            <img src="img/auth-login-events.png" alt="">
+            <aside class="notes">
+              <ul>
+                <li>Troca de informações entre login e auth-form</li>
+              </ul>
+            </aside>
 					</section>
 					<section>
             <p>Register</p>
@@ -574,22 +530,12 @@ angular
             </aside>
 					</section>
 					<section>
-            <p>Eventos de register</p>
-            <img src="img/auth-register-events.png" alt="">
-            <aside class="notes">
-              <ul>
-                <li>Troca de informações entre register e auth-form</li>
-              </ul>
-            </aside>
-					</section>
-					<section>
 						<p><code>register.component.js</code></p>
 						<pre><code class="javascript" data-trim>
 let register = {
   templateUrl: './register.html',
   controller: 'RegisterController'
 }
-
 angular
   .module('components.auth')
   .component('register', register)
@@ -609,22 +555,13 @@ function RegisterController(AuthService, $state) {
   let ctrl = this
   ctrl.$onInit = () => {
     ctrl.error = null
-    ctrl.user = {
-      email: '',
-      password: ''
-    }
+    ctrl.user = { email: '', password: '' }
   }
   ctrl.createUser = event => {
-    return AuthService
-      .register(event.user)
-      .then(() => {
-        $state.go('app')
-      }, reason => {
-        ctrl.error = reason.message
-      })
+    return AuthService.register(event.user)
+      .then(() => $state.go('app'), reason => ctrl.error = reason.message)
   }
 }
-
 angular
   .module('components.auth')
   .controller('RegisterController', RegisterController)
@@ -632,30 +569,39 @@ angular
           </section>
 					<section>
 						<p><code>register.html</code></p>
-						<pre><code class="html" data-trim>
-<h1>Cadastro</h1>
-<auth-form
+						<pre><code class="html" data-trim data-noscape>
+&lt;h1>Cadastro&lt;/h1>
+&lt;auth-form
   user="$ctrl.user"
   message="{{ $ctrl.error }}"
   reset="Limpar"
   button="Criar conta"
-  on-submit="$ctrl.createUser($event);">
-</auth-form>
-<div class="alert alert-info">
-  <i class="glyphicon glyphicon-exclamation-sign"></i>
-  <a ui-sref="auth.login">
+  on-submit="$ctrl.createUser($event)">
+&lt;/auth-form>
+&lt;div class="alert alert-info">
+  &lt;i class="glyphicon glyphicon-exclamation-sign">&lt;/i>
+  &lt;a ui-sref="auth.login">
     Já tem uma conta? Faça o login!
-  </a>
-</div>
+  &lt;/a>
+&lt;/div>
             </code></pre>
+					</section>
+					<section>
+            <p>Eventos de register</p>
+            <img src="img/auth-register-events.png" alt="">
+            <aside class="notes">
+              <ul>
+                <li>Troca de informações entre register e auth-form</li>
+              </ul>
+            </aside>
 					</section>
 					<section>
             <p>Auth form</p>
             <img src="img/auth-form.png" alt="">
             <aside class="notes">
               <ul>
-                <li>Genérico, serve pra login e register</li>
-                <li>Apenas recebe entradas de customização e emite evento de submit</li>
+                <li>Reusado pra login e register</li>
+                <li>Apenas recebe entradas de customização e emite o evento de submit</li>
               </ul>
             </aside>
 					</section>
@@ -673,7 +619,6 @@ let authForm = {
   templateUrl: './auth-form.html',
   controller: 'AuthFormController'
 }
-
 angular
   .module('components.auth')
   .component('authForm', authForm)
@@ -697,7 +642,6 @@ function AuthFormController() {
     })
   }
 }
-
 angular
   .module('components.auth')
   .controller('AuthFormController', AuthFormController)
@@ -705,585 +649,97 @@ angular
           </section>
 					<section>
 						<p><code>auth-form.html</code></p>
-						<pre><code class="html" data-trim>
-<form ng-submit="$ctrl.submitForm()" name="authForm" class="panel panel-default" novalidate>
-  <div class="panel-body">
-    <div ng-if="$ctrl.message" class="alert alert-danger">
+						<pre><code class="html" data-trim data-noscape>
+&lt;form ng-submit="$ctrl.submitForm()" name="authForm" class="panel panel-default" novalidate>
+  &lt;div class="panel-body">
+    &lt;div ng-if="$ctrl.message" class="alert alert-danger">
       {{ $ctrl.message }}
-    </div>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
+    &lt;/div>
+    &lt;div class="form-group">
+      &lt;label for="email">Email&lt;/label>
+      &lt;input
         ng-model="$ctrl.user.email"
         type="email"
         name="email"
         id="email"
         class="form-control"
-        validate-class="{success: 'has-success', 'error': 'has-error'}"
         autocomplete="off"
         required>
-    </div>
-    <div class="form-group">
-      <label for="password">Senha</label>
-      <input
+    &lt;/div>
+    &lt;div class="form-group">
+      &lt;label for="password">Senha&lt;/label>
+      &lt;input
         ng-model="$ctrl.user.password"
         type="password"
         name="password"
         id="password"
         class="form-control"
-        validate-class="{success: 'has-success', 'error': 'has-error'}"
         minlength="6"
         required>
-    </div>
-    <div class="text-right">
-      <button class="btn btn-warning" type="reset">
-        <i class="glyphicon glyphicon-remove"></i>
+    &lt;/div>
+    &lt;div class="text-right">
+      &lt;button class="btn btn-warning" type="reset">
+        &lt;i class="glyphicon glyphicon-remove">&lt;/i>
         {{ $ctrl.reset }}
-      </button>
-      <button class="btn btn-info" type="submit" ng-disabled="authForm.$invalid">
-        <i class="glyphicon glyphicon-ok"></i>
+      &lt;/button>
+      &lt;button class="btn btn-info" type="submit" ng-disabled="authForm.$invalid">
+        &lt;i class="glyphicon glyphicon-ok">&lt;/i>
         {{ $ctrl.button }}
-      </button>
-    </div>
-  </div>
-</form>
+      &lt;/button>
+    &lt;/div>
+  &lt;/div>
+&lt;/form>
 						</code></pre>
 					</section>
+          <section>
+            <h4>Estrutura da aplicação</h4>
+            <ul>
+              <li>app</li>
+              <li>app-nav</li>
+              <li>app-sidebar</li>
+            </ul>
+            <aside class="notes">
+              Vamos ver como isso ficaria na tela.
+            </aside>
+          </section>
 					<section>
-            <p>Search e contacts</p>
-            <img src="img/contacts.png" alt="">
-					</section>
-					<section>
-            <p>Eventos entre search e contacts</p>
-            <img src="img/contacts-events.png" alt="">
-					</section>
-					<section>
-            <p>Como acontece...</p>
-            <video autoplay loop>
-              <source data-src="video/search.mov" type="video/mp4" />
-            </video>
-					</section>
-					<section>
-						<h1>Ciclo de vida</h1>
-					</section>
-					<section>
-						<h3>Hooks / Ganchos</h3>
-						<ul>
-							<li>
-								<code>$onInit()</code>
-							</li>
-							<li>
-								<code>$onChanges(changesObj)</code>
-							</li>
-							<li>
-								<code>$doCheck()</code>
-							</li>
-							<li>
-								<code>$onDestroy()</code>
-							</li>
-							<li>
-								<code>$postLink()</code>
-							</li>
-						</ul>
+            <p>Estrutura da aplicação</p>
+            <img src="img/app.png" alt="App">
 						<aside class="notes">
-							<ol>
-								<li>
-									$onInit: Código de inicialização
-								</li>
-								<li>
-									$onChanges: Ligações unidirecionais
-								</li>
-								<li>
-									$doCheck: Em cada ciclo digestivo. Bom para agir sobre mudanças
-								</li>
-								<li>
-									$onDestroy: Liberar recursos, timers e manipuladores de eventos
-								</li>
-								<li>
-									$postLink: Elementos e seus filhos forem ligados, configurar manipuladores de DOM
-								</li>
-							</ol>
+              ui-view: diretiva de roteamento para troca de componentes / páginas.
 						</aside>
 					</section>
 					<section>
-						<p>View Component - New</p>
-						<img src="img/contact-new-component.png" alt="">
-					</section>
-					<section>
-						<p><code>contact-new.html</code></p>
-						<pre><code class="html">
-<contact-detail
-  contact="$ctrl.contact"
-  on-save="$ctrl.createNewContact($event);">
-</contact-detail>
-						</code></pre>
-					</section>
-					<section>
-						<p><code>contact-new.component.js</code></p>
-						<pre><code class="javascript" data-trim>
-let contactNew = {
-  templateUrl: './contact-new.html',
-  controller: 'ContactNewController'
-}
-angular
-  .module('components.contact')
-  .component('contactNew', contactNew)
-  .config(function ($stateProvider) {
-    $stateProvider
-      .state('new', {
-        parent: 'app',
-        url: '/new',
-        component: 'contactNew'
-      })
-  })
-						</code></pre>
-					</section>
-					<section>
-						<p><code>contact-new.controller.js</code></p>
-						<pre><code class="javascript">
-function ContactNewController(ContactService, $state) {
-  let ctrl = this
-  ctrl.$onInit = () => {
-    ctrl.contact = {
-      name: '',
-      email: '',
-      phone: '',
-      job: '',
-      location: '',
-      social: {
-        facebook: '',
-        google: '',
-        github: '',
-        twitter: '',
-        linkedin: ''
-      },
-      tag: 'none'
-    }
-  }
-  ctrl.createNewContact = event => {
-    return ContactService
-      .createNewContact(event.contact)
-      .then(contact => {
-        $state.go('contact', {
-          id: contact.key
-        })
-      })
-  }
-}
-
-angular
-  .module('components.contact')
-  .controller('ContactNewController', ContactNewController)
-						</code></pre>
-					</section>
-					<section>
-						<p>View Component - Edit</p>
-						<img src="img/contact-edit-component.png" alt="">
-					</section>
-					<section>
-						<p><code>contact-edit.html</code></p>
-						<pre><code class="html">
-<contact-detail
-  contact="$ctrl.contact"
-  on-delete="$ctrl.deleteContact($event)"
-  on-update="$ctrl.updateContact($event)">
-</contact-detail>
-						</code></pre>
-					</section>
-					<section>
-						<p><code>contact-edit.component.js</code></p>
-						<pre><code class="javascript" data-trim>
-let contactEdit = {
-  bindings: {
-    contact: '<'
-  },
-  templateUrl: './contact-edit.html',
-  controller: 'ContactEditController'
-}
-
-angular
-  .module('components.contact')
-  .component('contactEdit', contactEdit)
-  .config(function ($stateProvider) {
-    $stateProvider
-      .state('contact', {
-        parent: 'app',
-        url: '/contact/:id',
-        component: 'contactEdit',
-        resolve: {
-          contact: function ($transition$, ContactService) {
-            let key = $transition$.params().id;
-            return ContactService.getContactById(key).$loaded();
-          }
-        }
-      })
-  })
-						</code></pre>
-					</section>
-					<section>
-						<p><code>contact-edit.controller.js</code></p>
-						<pre><code class="javascript" data-trim>
-function ContactEditController($state, ContactService, $window) {
-  let ctrl = this
-
-  ctrl.updateContact = event => {
-    return ContactService
-      .updateContact(event.contact)
-  }
-  ctrl.deleteContact = event => {
-    let message = `Apagar ${event.contact.name} dos seus contatos?`
-    if ($window.confirm(message)) {
-      return ContactService
-        .deleteContact(event.contact)
-        .then(() => {
-          $state.go('contacts')
-        })
-    }
-  }
-}
-
-angular
-  .module('components.contact')
-  .controller('ContactEditController', ContactEditController)
-						</code></pre>
-					</section>
-					<section>
-						<p>View Component - Detail</p>
-						<table>
-							<tbody>
-								<tr>
-									<td>
-										<p style="text-align: center">new</p>
-										<img src="img/contact-new-component.png" alt="">
-									</td>
-									<td>
-										<p style="text-align: center">edit</p>
-										<img src="img/contact-edit-component.png" alt="">
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<p style="text-align: center">Reuso de contact detail em new e edit</p>
-					</section>
-					<section>
-						<h5>Mesmo caso do login e register com auth-form</h5>
-            <h3>Em new e edit com detail</h3>
-            <h4>Agora com <code>/:id</code> na URL</h4>
-					</section>
-					<section>
-						<p><code>contact-detail.html</code></p>
+						<p><code>app.html</code></p>
 						<pre><code class="html" data-trim>
-<div class="contact">
-  <form name="contactDetailForm" novalidate>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="alert alert-info">
-          <i class="glyphicon glyphicon-alert"></i>
-          Os campos obrigatórios estão marcados em amarelo.
-        </div>
-      </div>
+<app-nav user="$ctrl.user" on-logout="$ctrl.logout()"></app-nav>
+<div class="container-fluid">
+  <div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-sm-9">
+      <div ui-view></div>
     </div>
-    <div class="row">
-      <div class="col-md-12 navbar">
-        <contact-tag
-          tag="$ctrl.contact.tag"
-          on-change="$ctrl.tagChange($event);">
-        </contact-tag>
-      </div>
+    <div class="col-sm-3 sidebar-offcanvas" id="sidebar">
+      <app-sidebar></app-sidebar>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div
-          class="form-group">
-          <label>
-            Nome
-          </label>
-          <input
-            type="text"
-            name="name"
-            class="form-control"
-            validate-class="{success: 'has-success', error: 'has-error', warning: 'has-warning'}"
-            minlength="8"
-            required
-            ng-change="$ctrl.updateContact();"
-            ng-model-options="{
-              'updateOn': 'default blur',
-              'debounce': {
-                'default': 250,
-                'blur': 0
-              }
-            }"
-            ng-model="$ctrl.contact.name">
-        </div>
-        <div
-          class="form-group">
-          <label>
-            Telefone
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            class="form-control"
-            validate-class="{success: 'has-success', error: 'has-error', warning: 'has-warning'}"
-            minlength="8"
-            required
-            ng-change="$ctrl.updateContact();"
-            ng-model-options="{
-              'updateOn': 'default blur',
-              'debounce': {
-                'default': 250,
-                'blur': 0
-              }
-            }"
-            ng-model="$ctrl.contact.phone">
-        </div>
-        <div
-          class="form-group">
-          <label>
-            Email
-          </label>
-          <input
-            type="email"
-            name="email"
-            class="form-control"
-            validate-class="{success: 'has-success', error: 'has-error', warning: 'has-warning'}"
-            required
-            ng-change="$ctrl.updateContact();"
-            ng-model-options="{
-              'updateOn': 'default blur',
-              'debounce': {
-                'default': 250,
-                'blur': 0
-              }
-            }"
-            ng-model="$ctrl.contact.email">
-        </div>
-        <div class="form-group">
-          <label>
-            Profissão
-          </label>
-          <input
-            type="text"
-            name="jobTitle"
-            class="form-control"
-            ng-change="$ctrl.updateContact();"
-            ng-model-options="{
-              'updateOn': 'default blur',
-              'debounce': {
-                'default': 250,
-                'blur': 0
-              }
-            }"
-            ng-model="$ctrl.contact.job">
-        </div>
-        <div class="form-group">
-          <label>
-            Endereço
-          </label>
-          <input
-            type="text"
-            name="location"
-            class="form-control"
-            ng-change="$ctrl.updateContact();"
-            ng-model-options="{
-              'updateOn': 'default blur',
-              'debounce': {
-                'default': 250,
-                'blur': 0
-              }
-            }"
-            ng-model="$ctrl.contact.location">
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>
-            Facebook
-          </label>
-          <input
-            type="url"
-            name="facebook"
-            class="form-control"
-            validate-class="{success: 'has-success', 'error': 'has-error'}"
-            ng-change="$ctrl.updateContact();"
-            ng-model-options="{
-              'updateOn': 'default blur',
-              'debounce': {
-                'default': 250,
-                'blur': 0
-              }
-            }"
-            ng-model="$ctrl.contact.social.facebook">
-        </div>
-        <div class="form-group">
-          <label>
-            Google+
-          </label>
-          <input
-            type="url"
-            name="google"
-            class="form-control"
-            validate-class="{success: 'has-success', 'error': 'has-error'}"
-            ng-change="$ctrl.updateContact();"
-            ng-model-options="{
-              'updateOn': 'default blur',
-              'debounce': {
-                'default': 250,
-                'blur': 0
-              }
-            }"
-            ng-model="$ctrl.contact.social.google">
-        </div>
-        <div class="form-group">
-          <label>
-            GitHub
-          </label>
-          <input
-            type="url"
-            name="github"
-            class="form-control"
-            validate-class="{success: 'has-success', 'error': 'has-error'}"
-            ng-change="$ctrl.updateContact();"
-            ng-model-options="{
-              'updateOn': 'default blur',
-              'debounce': {
-                'default': 250,
-                'blur': 0
-              }
-            }"
-            ng-model="$ctrl.contact.social.github">
-        </div>
-        <div class="form-group">
-          <label>
-            Twitter
-          </label>
-          <input
-            type="url"
-            name="twitter"
-            class="form-control"
-            validate-class="{success: 'has-success', 'error': 'has-error'}"
-            ng-change="$ctrl.updateContact();"
-            ng-model-options="{
-              'updateOn': 'default blur',
-              'debounce': {
-                'default': 250,
-                'blur': 0
-              }
-            }"
-            ng-model="$ctrl.contact.social.twitter">
-        </div>
-        <div class="form-group">
-          <label>
-            LinkedIn
-          </label>
-          <input
-            type="url"
-            name="linkedin"
-            class="form-control"
-            validate-class="{success: 'has-success', 'error': 'has-error'}"
-            ng-change="$ctrl.updateContact();"
-            ng-model-options="{
-              'updateOn': 'default blur',
-              'debounce': {
-                'default': 250,
-                'blur': 0
-              }
-            }"
-            ng-model="$ctrl.contact.social.linkedin">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 navbar text-right">
-        <button class="btn btn-warning" type="reset">
-          <i class="glyphicon glyphicon-remove"></i>
-          Limpar
-        </button>
-        <button
-          ng-if="$ctrl.isNewContact"
-          class="btn btn-success"
-          ng-disabled="contactDetailForm.$invalid"
-          ng-click="$ctrl.saveContact();">
-          <i class="fa fa-check"></i>
-          Salvar contato
-        </button>
-        <button
-          ng-if="!$ctrl.isNewContact"
-          class="btn btn-danger"
-          ng-click="$ctrl.deleteContact();">
-          <i class="fa fa-trash-o"></i>
-          Apagar contato
-        </button>
-      </div>
-    </div>
-  </form>
+  </div>
 </div>
 						</code></pre>
 						<aside class="notes">
-							Explicar o ng-if nos botões para comparação de new ou edit
+							Apontar uso da app-nav e app-sidebar
 						</aside>
 					</section>
 					<section>
-						<p><code>contact-detail.component.js</code></p>
-						<pre><code class="javascript" data-trim>
-let contactDetail = {
-  bindings: {
-    contact: '<',
-    onSave: '&',
-    onUpdate: '&',
-    onDelete: '&'
-  },
-  templateUrl: './contact-detail.html',
-  controller: 'ContactDetailController'
-}
-
-angular
-  .module('components.contact')
-  .component('contactDetail', contactDetail)
-						</code></pre>
+            <h4>Componentes</h4>
+            <ul>
+              <li>auth</li>
+              <li>search</li>
+              <li>contacts</li>
+              <li>contact</li>
+              <li>...</li>
+            </ul>
 					</section>
 					<section>
-						<p><code>contact-detail.controller.js</code></p>
-						<pre><code class="javascript" data-trim>
-function ContactDetailController() {
-  let ctrl = this
-  ctrl.$onInit = () => {
-    ctrl.isNewContact = !ctrl.contact.$id
-  }
-  ctrl.saveContact = () => {
-    ctrl.onSave({
-      $event: {
-        contact: ctrl.contact
-      }
-    })
-  }
-  ctrl.updateContact = () => {
-    ctrl.onUpdate({
-      $event: {
-        contact: ctrl.contact
-      }
-    })
-  }
-  ctrl.deleteContact = () => {
-    ctrl.onDelete({
-      $event: {
-        contact: ctrl.contact
-      }
-    })
-  }
-  ctrl.tagChange = event => {
-    ctrl.contact.tag = event.tag
-    ctrl.updateContact()
-  }
-}
-
-angular
-  .module('components.contact')
-  .controller('ContactDetailController', ContactDetailController)
-						</code></pre>
-					</section>
-					<section>
-						<p>View Component - Contacts</p>
+						<p>Contacts</p>
 						<img src="img/app-lg.png" alt="">
 					</section>
 					<section>
@@ -1340,7 +796,6 @@ let contacts = {
   templateUrl: './contacts.html',
   controller: 'ContactsController'
 }
-
 angular
   .module('components.contact')
   .component('contacts', contacts)
@@ -1394,163 +849,451 @@ function ContactsController($filter, $state) {
     })
   }
 }
-
 angular
   .module('components.contact')
   .controller('ContactsController', ContactsController)
 						</code></pre>
 					</section>
 					<section>
-						<p><code>contacts.filter.js</code></p>
+            <p>Search e contacts</p>
+            <img src="img/contacts.png" alt="">
+					</section>
+					<section>
+            <p>Eventos entre search e contacts</p>
+            <img src="img/contacts-events.png" alt="">
+					</section>
+					<section>
+            <p>Como acontece...</p>
+            <video autoplay loop>
+              <source data-src="video/search.mov" type="video/mp4" />
+            </video>
+					</section>
+					<section>
+						<p>Novo contato</p>
+						<img src="img/contact-new-component.png" alt="">
+					</section>
+					<section>
+						<p><code>contact-new.html</code></p>
+						<pre><code class="html" data-trim data-noscape>
+&lt;contact-detail
+  contact="$ctrl.contact"
+  on-save="$ctrl.createNewContact($event)">
+&lt;/contact-detail>
+						</code></pre>
+					</section>
+					<section>
+						<p><code>contact-new.component.js</code></p>
 						<pre><code class="javascript" data-trim>
-function contactsFilter() {
-  return (collection, params) => {
-    return collection.filter(item => {
-      return item.tag.state === (
-        params.filter === 'none' ? item.tag.state : params.filter
-      )
-    })
-  }
+let contactNew = {
+  templateUrl: './contact-new.html',
+  controller: 'ContactNewController'
 }
-
 angular
   .module('components.contact')
-  .filter('contactsFilter', contactsFilter)
+  .component('contactNew', contactNew)
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('new', {
+        parent: 'app',
+        url: '/new',
+        component: 'contactNew'
+      })
+  })
 						</code></pre>
 					</section>
 					<section>
-						<h1>App</h1>
-					</section>
-					<section>
-						<p><code>index.html</code></p>
-						<pre><code class="html" data-trim>
-&lt;!doctype html&gt;
-&lt;html ng-app="root"&gt;
-  &lt;head&gt;
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Agenda de contatos</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="css/style.css">
-  &lt;/head&gt;
-  &lt;body&gt;
-    <root>
-      <span class="loader">Carregando...</span>
-    </root>
-    <script src="js/vendor.js"></script>
-    <script src="js/bundle.js"></script>
-  &lt;/body&gt;
-&lt;/html&gt;
-						</code></pre>
-					</section>
-					<section>
-						<p><code>root.html</code></p>
-						<pre><code class="html" data-trim>
-<div ui-view></div>
-						</code></pre>
-					</section>
-					<section>
-						<p><code>root.component.js</code></p>
+						<p><code>contact-new.controller.js</code></p>
 						<pre><code class="javascript" data-trim>
-let root = {
-  templateUrl: './root.html'
+function ContactNewController(ContactService, $state) {
+  let ctrl = this
+  ctrl.$onInit = () => {
+    ctrl.contact = { ... }
+  }
+  ctrl.createNewContact = event => {
+    return ContactService
+      .createNewContact(event.contact)
+      .then(contact => $state.go('contact', { id: contact.key }))
+  }
 }
-
 angular
-  .module('root')
-  .component('root', root)
+  .module('components.contact')
+  .controller('ContactNewController', ContactNewController)
 						</code></pre>
 					</section>
 					<section>
-						<p><code>app.html</code></p>
-						<pre><code class="html" data-trim>
-<app-nav user="$ctrl.user" on-logout="$ctrl.logout();"></app-nav>
-<div class="container-fluid">
-  <div class="row row-offcanvas row-offcanvas-right">
-    <div class="col-sm-9">
-      <div ui-view></div>
-    </div>
-    <div class="col-sm-3 sidebar-offcanvas" id="sidebar">
-      <app-sidebar></app-sidebar>
-    </div>
-  </div>
-</div>
+						<p>Editar contato</p>
+						<img src="img/contact-edit-component.png" alt="">
+					</section>
+					<section>
+						<p><code>contact-edit.html</code></p>
+						<pre><code class="html" data-trim data-noscape>
+&lt;contact-detail
+  contact="$ctrl.contact"
+  on-delete="$ctrl.deleteContact($event)"
+  on-update="$ctrl.updateContact($event)">
+&lt;/contact-detail>
+						</code></pre>
+					</section>
+					<section>
+						<p><code>contact-edit.component.js</code></p>
+						<pre><code class="javascript" data-trim>
+let contactEdit = {
+  bindings: {
+    contact: '<'
+  },
+  templateUrl: './contact-edit.html',
+  controller: 'ContactEditController'
+}
+angular
+  .module('components.contact')
+  .component('contactEdit', contactEdit)
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('contact', {
+        parent: 'app',
+        url: '/contact/:id',
+        component: 'contactEdit',
+        resolve: {
+          contact: function ($transition$, ContactService) {
+            let key = $transition$.params().id;
+            return ContactService.getContactById(key).$loaded();
+          }
+        }
+      })
+  })
+						</code></pre>
+					</section>
+					<section>
+						<p><code>contact-edit.controller.js</code></p>
+						<pre><code class="javascript" data-trim>
+function ContactEditController($state, ContactService, $window) {
+  let ctrl = this
+  ctrl.updateContact = event => {
+    return ContactService
+      .updateContact(event.contact)
+  }
+  ctrl.deleteContact = event => {
+    let message = `Apagar ${event.contact.name} dos seus contatos?`
+    if ($window.confirm(message)) {
+      return ContactService.deleteContact(event.contact)
+        .then(() => $state.go('contacts'))
+    }
+  }
+}
+angular
+  .module('components.contact')
+  .controller('ContactEditController', ContactEditController)
+						</code></pre>
+					</section>
+					<section>
+						<p>Detalhes do contato</p>
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<p style="text-align: center">novo</p>
+										<img src="img/contact-new-component.png" alt="">
+									</td>
+									<td>
+										<p style="text-align: center">editar</p>
+										<img src="img/contact-edit-component.png" alt="">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<p style="text-align: center"><strong>Reuso</strong> de <code>contact-detail</code> em new e edit</p>
+            <aside class="notes">
+              Mesmo caso do login e register com auth-form
+            </aside>
+					</section>
+					<section>
+						<p><code>contact-detail.html</code></p>
+						<pre><code class="html" data-trim data-noescape>
+&lt;div class="contact">
+  &lt;form name="contactDetailForm" novalidate>
+    &lt;div class="row">
+      &lt;div class="col-md-12">
+        &lt;div class="alert alert-info">
+          &lt;i class="glyphicon glyphicon-alert">&lt;/i>
+          Os campos obrigatórios estão marcados em amarelo.
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+    &lt;div class="row">
+      &lt;div class="col-md-12 navbar">
+        &lt;contact-tag
+          tag="$ctrl.contact.tag"
+          on-change="$ctrl.tagChange($event)">
+        &lt;/contact-tag>
+      &lt;/div>
+    &lt;/div>
+    &lt;div class="row">
+      &lt;div class="col-md-6">
+        &lt;div
+          class="form-group">
+          &lt;label>
+            Nome
+          &lt;/label>
+          &lt;input
+            type="text"
+            name="name"
+            class="form-control"
+            minlength="8"
+            required
+            ng-change="$ctrl.updateContact()"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.name">
+        &lt;/div>
+        &lt;div
+          class="form-group">
+          &lt;label>
+            Telefone
+          &lt;/label>
+          &lt;input
+            type="tel"
+            name="phone"
+            class="form-control"
+            minlength="8"
+            required
+            ng-change="$ctrl.updateContact()"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.phone">
+        &lt;/div>
+        &lt;div
+          class="form-group">
+          &lt;label>
+            Email
+          &lt;/label>
+          &lt;input
+            type="email"
+            name="email"
+            class="form-control"
+            required
+            ng-change="$ctrl.updateContact()"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.email">
+        &lt;/div>
+        &lt;div class="form-group">
+          &lt;label>
+            Profissão
+          &lt;/label>
+          &lt;input
+            type="text"
+            name="jobTitle"
+            class="form-control"
+            ng-change="$ctrl.updateContact()"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.job">
+        &lt;/div>
+        &lt;div class="form-group">
+          &lt;label>
+            Endereço
+          &lt;/label>
+          &lt;input
+            type="text"
+            name="location"
+            class="form-control"
+            ng-change="$ctrl.updateContact()"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.location">
+        &lt;/div>
+      &lt;/div>
+      &lt;div class="col-md-6">
+        &lt;div class="form-group">
+          &lt;label>
+            Facebook
+          &lt;/label>
+          &lt;input
+            type="url"
+            name="facebook"
+            class="form-control"
+            ng-change="$ctrl.updateContact()"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.social.facebook">
+        &lt;/div>
+        &lt;div class="form-group">
+          &lt;label>
+            Google+
+          &lt;/label>
+          &lt;input
+            type="url"
+            name="google"
+            class="form-control"
+            ng-change="$ctrl.updateContact()"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.social.google">
+        &lt;/div>
+        &lt;div class="form-group">
+          &lt;label>
+            GitHub
+          &lt;/label>
+          &lt;input
+            type="url"
+            name="github"
+            class="form-control"
+            ng-change="$ctrl.updateContact()"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.social.github">
+        &lt;/div>
+        &lt;div class="form-group">
+          &lt;label>
+            Twitter
+          &lt;/label>
+          &lt;input
+            type="url"
+            name="twitter"
+            class="form-control"
+            ng-change="$ctrl.updateContact()"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.social.twitter">
+        &lt;/div>
+        &lt;div class="form-group">
+          &lt;label>
+            LinkedIn
+          &lt;/label>
+          &lt;input
+            type="url"
+            name="linkedin"
+            class="form-control"
+            ng-change="$ctrl.updateContact()"
+            ng-model-options="{
+              'updateOn': 'default blur',
+              'debounce': {
+                'default': 250,
+                'blur': 0
+              }
+            }"
+            ng-model="$ctrl.contact.social.linkedin">
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+    &lt;div class="row">
+      &lt;div class="col-md-12 navbar text-right">
+        &lt;button class="btn btn-warning" type="reset">
+          &lt;i class="glyphicon glyphicon-remove">&lt;/i>
+          Limpar
+        &lt;/button>
+        &lt;button
+          ng-if="$ctrl.isNewContact"
+          class="btn btn-success"
+          ng-disabled="contactDetailForm.$invalid"
+          ng-click="$ctrl.saveContact()">
+          &lt;i class="fa fa-check">&lt;/i>
+          Salvar contato
+        &lt;/button>
+        &lt;button
+          ng-if="!$ctrl.isNewContact"
+          class="btn btn-danger"
+          ng-click="$ctrl.deleteContact()">
+          &lt;i class="fa fa-trash-o">&lt;/i>
+          Apagar contato
+        &lt;/button>
+      &lt;/div>
+    &lt;/div>
+  &lt;/form>
+&lt;/div>
 						</code></pre>
 						<aside class="notes">
-							Apontar uso da app-nav e app-sidebar
+							Explicar o ng-if nos botões para comparação de new ou edit
 						</aside>
 					</section>
 					<section>
-						<p><code>app-nav.html</code></p>
-						<pre><code class="html" data-trim>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a ui-sref="contacts({filter: none})" class="navbar-brand">Agenda de contatos</a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li>
-          <a ui-sref="new">
-            <i class="glyphicon glyphicon-plus"></i>
-            Novo contato
-          </a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="glyphicon glyphicon-user"></i>
-            <span ng-bind="$ctrl.user.email"></span>
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="" ng-click="$ctrl.onLogout()">
-                <i class="glyphicon glyphicon-log-out"></i>
-                Sair
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<a class="btn btn-success btn-lg float" ng-click="$ctrl.offcanvas()">
-  <i class="glyphicon glyphicon-list-alt"></i>
-  <i class="glyphicon glyphicon-resize-horizontal"></i>
-</a>
+						<p><code>contact-detail.component.js</code></p>
+						<pre><code class="javascript" data-trim>
+let contactDetail = {
+  bindings: {
+    contact: '<',
+    onSave: '&',
+    onUpdate: '&',
+    onDelete: '&'
+  },
+  templateUrl: './contact-detail.html',
+  controller: 'ContactDetailController'
+}
+angular
+  .module('components.contact')
+  .component('contactDetail', contactDetail)
 						</code></pre>
 					</section>
 					<section>
-						<p><code>app-sidebar.html</code></p>
-						<pre><code class="html" data-trim>
-<aside class="panel panel-default">
-  <div class="panel-heading">
-    <i class="glyphicon glyphicon-tag"></i>
-    Etiquetas
-  </div>
-  <contact-tags
-    class="tags"
-    contact-tags="$ctrl.contactTags"
-    on-select="$ctrl.selectTag($event)">
-  </contact-tags>
-  <div class="panel-body">
-    <contact-tag-detail
-      tag="$ctrl.tag"
-      on-save="$ctrl.createNewTag($event)"
-      on-delete="$ctrl.deleteTag($event)"
-      on-update="$ctrl.updateTag($event)">
-    </contact-tag-detail>
-  </div>
-</aside>
+						<p><code>contact-detail.controller.js</code></p>
+						<pre><code class="javascript" data-trim>
+function ContactDetailController() {
+  let ctrl = this
+  ctrl.$onInit = () => {
+    ctrl.isNewContact = !ctrl.contact.$id
+  }
+  ctrl.saveContact = () => {
+    ctrl.onSave({ $event: { contact: ctrl.contact } })
+  }
+  ctrl.updateContact = () => {
+    ctrl.onUpdate({ $event: { contact: ctrl.contact } })
+  }
+  ctrl.deleteContact = () => {
+    ctrl.onDelete({ $event: { contact: ctrl.contact } })
+  }
+  ctrl.tagChange = event => {
+    ctrl.contact.tag = event.tag
+    ctrl.updateContact()
+  }
+}
+angular
+  .module('components.contact')
+  .controller('ContactDetailController', ContactDetailController)
 						</code></pre>
 					</section>
 					<section style="font-size: 2.4em">
@@ -1582,7 +1325,6 @@ function ContactService(AuthService, $firebaseRef, $firebaseArray, $firebaseObje
     }
   }
 }
-
 angular
   .module('components.contact')
   .factory('ContactService', ContactService)
@@ -1643,14 +1385,14 @@ angular
 				history: true,
 				center: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
 
 				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' }
 				]
 			});
 		</script>
